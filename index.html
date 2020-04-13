@@ -176,7 +176,7 @@
 <h2 id="第一步-安装node-js，Hexo，Git，创建GitHub账号"><a href="#第一步-安装node-js，Hexo，Git，创建GitHub账号" class="headerlink" title="第一步:安装node.js，Hexo，Git，创建GitHub账号"></a>第一步:安装node.js，Hexo，Git，创建GitHub账号</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p>node.js 的安装网址：nodejs.org</p>
 <p>安装完成后进终端输入 node -v 检查版本，出版本信息则安装成功；</p>
 <p>输入npm -v检查版本，出版本信息则成功。因为要用npm安装hexo，但是国内比较慢，所以这里采用淘宝的镜像源来安装hexo，利用npm为跳板:</p>
-<p>输入npm install -g cnpm –registry=<img src="file:///C:%5CUsers%5C70266%5CAppData%5CRoaming%5CTencent%5CQQTempSys%5B5UQ%5BBL(6~BS2JV6W%7DN6%5B%S.png" alt="img"><a href="https://registry.npm.taobao.org,下载安装cnpm" target="_blank" rel="noopener">https://registry.npm.taobao.org,下载安装cnpm</a> ，安装完后一样，输入 cnpm -v查出版本号，成功。</p>
+<p>输入npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org,下载安装cnpm" target="_blank" rel="noopener">https://registry.npm.taobao.org,下载安装cnpm</a> ，安装完后一样，输入 cnpm -v查出版本号，成功。</p>
 <h3 id="下面安装hexo"><a href="#下面安装hexo" class="headerlink" title="下面安装hexo"></a>下面安装hexo</h3><p>终端输入指令：cnpm install -g hexo-cli</p>
 <p>验证：hexo -v 出版本号即成功</p>
 <h2 id="关于Git"><a href="#关于Git" class="headerlink" title="关于Git"></a>关于Git</h2><p>Git可以用来获得ssh公匙和终端控制，这个从网上下载安装就好。</p>
@@ -189,7 +189,7 @@
 <p>完成后 终端输入hexo g 重新生成一下网站；hexo s开启服务，本地的就完成了</p>
 <p>Ctrl+c 断开</p>
 <h3 id="配置到GitHub上"><a href="#配置到GitHub上" class="headerlink" title="配置到GitHub上"></a>配置到GitHub上</h3><p>去GitHub上新建repository</p>
-<p>注意：名称是:自己的GitHub用户名.<img src="file:///C:%5CUsers%5C70266%5CAppData%5CRoaming%5CTencent%5CQQTempSys%W@GJ$ACOF(TYDYECOKVDYB.png" alt="img">github.io， Codesheep的视频里是随便起的名字，现在不能这么做了。ps：就是因为这个我搞了一个晚上。。</p>
+<p>注意：名称是:自己的GitHub用户名.github.io， Codesheep的视频里是随便起的名字，现在不能这么做了。ps：就是因为这个我搞了一个晚上。。</p>
 <p>新建后，复制repository地址，准备配置hexo。</p>
 <p>到终端blog路径下，安装Git插件：cnpm install –save hexo-deployer-git</p>
 <p><strong>重点来了</strong>，配置当前目录下一个文件：notepad _config-yml</p>
