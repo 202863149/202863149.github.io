@@ -152,6 +152,115 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/13/1/">真·第一篇博客（记博客搭建的填坑过程）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/13/1/" class="archive-article-date">
+  	<time datetime="2020-04-13T13:12:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>第一次搭建博客，参考视频是Codesheep的视频，但是由于时间关系，一些技术不能完美复现，于是也上网上查了点文章，过程不难但是很烦，记录一下。由于网上教程都比较详细，我就简单记录一些我自己的过程，遇到的难题和解决方法。ps：Windows的系统，用hexo的框架</p>
+<h2 id="第一步-安装node-js，Hexo，Git，创建GitHub账号"><a href="#第一步-安装node-js，Hexo，Git，创建GitHub账号" class="headerlink" title="第一步:安装node.js，Hexo，Git，创建GitHub账号"></a>第一步:安装node.js，Hexo，Git，创建GitHub账号</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p>node.js 的安装网址：<img src="file:///C:%5CUsers%5C70266%5CAppData%5CRoaming%5CTencent%5CQQTempSys%W@GJ$ACOF(TYDYECOKVDYB.png" alt="img">nodejs.org</p>
+<p>安装完成后进终端输入 node -v 检查版本，出版本信息则安装成功；</p>
+<p>输入npm -v检查版本，出版本信息则成功。因为要用npm安装hexo，但是国内比较慢，所以这里采用淘宝的镜像源来安装hexo，利用npm为跳板:</p>
+<p>输入npm install -g cnpm –registry=<img src="file:///C:%5CUsers%5C70266%5CAppData%5CRoaming%5CTencent%5CQQTempSys%5B5UQ%5BBL(6~BS2JV6W%7DN6%5B%S.png" alt="img"><a href="https://registry.npm.taobao.org,下载安装cnpm" target="_blank" rel="noopener">https://registry.npm.taobao.org,下载安装cnpm</a> ，安装完后一样，输入 cnpm -v查出版本号，成功。</p>
+<h3 id="下面安装hexo"><a href="#下面安装hexo" class="headerlink" title="下面安装hexo"></a>下面安装hexo</h3><p>终端输入指令：cnpm install -g hexo-cli</p>
+<p>验证：hexo -v 出版本号即成功</p>
+<h2 id="关于Git"><a href="#关于Git" class="headerlink" title="关于Git"></a>关于Git</h2><p>Git可以用来获得ssh公匙和终端控制，这个从网上下载安装就好。</p>
+<h3 id="GitHub账号注册"><a href="#GitHub账号注册" class="headerlink" title="GitHub账号注册"></a>GitHub账号注册</h3><p><a href="https://github.com" target="_blank" rel="noopener">https://github.com</a></p>
+<h2 id="配置hexo"><a href="#配置hexo" class="headerlink" title="配置hexo"></a>配置hexo</h2><h3 id="本地hexo"><a href="#本地hexo" class="headerlink" title="本地hexo"></a>本地hexo</h3><p>利用Git CMD终端到自己选定的文件路径下mkdir建议创建一个blog文件夹，万一过程有什么错误可以直接把文件夹干掉重来。</p>
+<p>进入路径，指令：hexo init （初始化生成hexo博客）</p>
+<p> 指令：hexo s（开启）</p>
+<p>此时在本地的4000端口产生一个本地的blog,进入网站：localhost:4000可进行访问</p>
+<p>Git终端中 hexo n”Name”新建博客，路径在blog中的\source_posts,进入即可写博客</p>
+<p>完成后 终端输入hexo g 重新生成一下网站；hexo s开启服务，本地的就完成了</p>
+<p>Ctrl+c 断开</p>
+<h3 id="配置到GitHub上"><a href="#配置到GitHub上" class="headerlink" title="配置到GitHub上"></a>配置到GitHub上</h3><p>去GitHub上新建repository</p>
+<p>注意：名称是:自己的GitHub用户名.<img src="file:///C:%5CUsers%5C70266%5CAppData%5CRoaming%5CTencent%5CQQTempSys%W@GJ$ACOF(TYDYECOKVDYB.png" alt="img">github.io， Codesheep的视频里是随便起的名字，现在不能这么做了。ps：就是因为这个我搞了一个晚上。。</p>
+<p>新建后，复制repository地址，准备配置hexo。</p>
+<p>到终端blog路径下，安装Git插件：cnpm install –save hexo-deployer-git</p>
+<p><strong>重点来了</strong>，配置当前目录下一个文件：notepad _config-yml</p>
+<p>找到#Deployment</p>
+<p> type: ‘git’</p>
+<p> repo: 粘贴repository地址</p>
+<p> branch: master</p>
+<p><strong>注意冒号后有空格，保存退出</strong></p>
+<p>命令：git config –global user.name“github 用户名“</p>
+<p>还有个命令终端我给忘了，不过这个时候输入：hexo d</p>
+<p>应该有提示的，另一个是配置邮箱，就是GitHub账号绑定的邮箱。</p>
+<p>配置完成之后 继续：hexo d</p>
+<p>输入Github账号密码</p>
+<p>即可配置成功。</p>
+<p>此时便可访问之前设置的名称形成的博客地址了。</p>
+<p>呼，累死了。</p>
+<p>以后只要新建，写博客，写完 hexo g,hexo d就行啦<br>关于ssh公匙</p>
+<p>之前没配好名称而导致的网页404，以为是ssh公匙问题，后来去网上配置好了公匙也没能用，反而名称才是最重要的，所以公匙应该配不配都没关系吧，只要git 里的global身份配置好就行了吧 </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">hexo博客搭建</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/13/1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -318,6 +427,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">hexo博客搭建</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
