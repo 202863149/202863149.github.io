@@ -16,7 +16,7 @@
 <meta property="og:description" content="总计朋友qq号被盗，想拿骗子练练手，不过首先肯定是想获取对方ip地址，但是奈何才疏学浅，不会，所以上网查了一下。在此总结出一部分成功的结论。">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2020-04-15T10:18:13.000Z">
-<meta property="article:modified_time" content="2020-04-15T10:33:01.573Z">
+<meta property="article:modified_time" content="2020-04-15T10:52:48.199Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="抓包定位ip">
 <meta name="twitter:card" content="summary">
@@ -194,6 +194,7 @@
 <a id="more"></a>
 
 <h2 id="wireshark抓包"><a href="#wireshark抓包" class="headerlink" title="wireshark抓包"></a>wireshark抓包</h2><p>ctrl+f设置字符串和分组详情,在字符串后面填上020048（为什么是这个码暂时未知），然后回到qq聊天界面拨打qq电话，再切回wireshark点击查找，直到查出为止。</p>
+<p><strong>补充</strong>：020048是QQ UDP 72字节的报文头。</p>
 <h2 id="试错"><a href="#试错" class="headerlink" title="试错"></a>试错</h2><p><strong>当pc端登陆时，对方不接电话查不到</strong>，但是当对方仅手机登录或者pc端接电话时可以查出对方ip，当然了，是公网ip。</p>
 <p>这个会比较有局限性：</p>
 <p>第一对方不会接电话；</p>
