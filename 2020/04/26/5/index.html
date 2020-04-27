@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/26/5/issue3.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/26/5/issue4.png">
 <meta property="article:published_time" content="2020-04-25T23:56:21.000Z">
-<meta property="article:modified_time" content="2020-04-27T01:31:36.381Z">
+<meta property="article:modified_time" content="2020-04-27T08:16:11.552Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="无线渗透">
 <meta name="twitter:card" content="summary">
@@ -277,12 +277,11 @@
 <li><p>TKIP（WPA1）：+20 = 2324</p>
 </li>
 <li><p>CCMP（WPA2）：+16 = 2320</p>
-<p><strong>注：控制型的帧没有数据段</strong>。</p>
-<p>36.13</p>
+<p><strong>注：控制型的帧没有数据（Data）段</strong>。</p>
 </li>
 </ul>
 </li>
-<li><p>Fcs 奇偶差错校验</p>
+<li><p>Fcs 奇偶差错校验：对Header和Data做CRC计算的值（只对单播帧有效，广播和多播帧可能被接收。）</p>
 </li>
 </ul>
 
