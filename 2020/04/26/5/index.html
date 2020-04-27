@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/26/5/issue3.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/26/5/issue4.png">
 <meta property="article:published_time" content="2020-04-25T23:56:21.000Z">
-<meta property="article:modified_time" content="2020-04-27T01:13:56.951Z">
+<meta property="article:modified_time" content="2020-04-27T01:31:36.381Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="无线渗透">
 <meta name="twitter:card" content="summary">
@@ -261,15 +261,26 @@
 </li>
 <li><p>Sequence control（2字节）</p>
 <ul>
-<li>Sequence Number（12位）</li>
-<li>Fragment Number（4位）</li>
+<li>Sequence Number（12位）：分段后的分段号</li>
+<li>Fragment Number（4位）：分段号</li>
 </ul>
 </li>
 <li><p>Address3（6字节）</p>
+<p><strong>注:BSSID为AP Mac地址。当AP支持多BSS时随机生成BSSID。</strong></p>
 </li>
 </ol>
 </li>
-<li><p>Date</p>
+<li><p>Date：未加密的MSDU最大长度为2304字节，其中包含256字节的上层头信息和被传递的2048字节，不同的加密方法会增加一定的长度：</p>
+<ul>
+<li><p>WEP：+8 = 2313</p>
+</li>
+<li><p>TKIP（WPA1）：+20 = 2324</p>
+</li>
+<li><p>CCMP（WPA2）：+16 = 2320</p>
+<p><strong>注：控制型的帧没有数据段</strong>。</p>
+<p>36.13</p>
+</li>
+</ul>
 </li>
 <li><p>Fcs 奇偶差错校验</p>
 </li>
