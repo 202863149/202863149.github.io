@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>无线渗透（四） | 冯某人的个人博客</title>
+  <title>无线渗透复学（四） | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="总记书接上回。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无线渗透（四）">
+<meta property="og:title" content="无线渗透复学（四）">
 <meta property="og:url" content="http://yoursite.com/2020/04/27/7/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
 <meta property="og:description" content="总记书接上回。">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2020-04-27T12:22:02.000Z">
-<meta property="article:modified_time" content="2020-04-29T01:33:30.063Z">
+<meta property="article:modified_time" content="2020-04-29T01:57:30.130Z">
 <meta property="article:author" content="冯某人">
 <meta name="twitter:card" content="summary">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      无线渗透（四）
+      无线渗透复学（四）
     </h1>
   
 
@@ -228,6 +228,11 @@
 <p><strong>注：</strong>可以有加密方式但是不一定有共享密钥，也可以空密码</p>
 <hr>
 <h4 id="ASSOCIATION-REASSOCIATION-FRAMES"><a href="#ASSOCIATION-REASSOCIATION-FRAMES" class="headerlink" title="ASSOCIATION/REASSOCIATION FRAMES"></a>ASSOCIATION/REASSOCIATION FRAMES</h4><p>身份认证成功后，STA和AP进行关联</p>
+<hr>
+<h4 id="DEAUTHENTICATION"><a href="#DEAUTHENTICATION" class="headerlink" title="DEAUTHENTICATION"></a>DEAUTHENTICATION</h4><p>（印象里这里就是以后的重点，可能会通过把AP与STA之间的连接打掉，再抓个AUTHENTICATION，然后通过跑字典破密码）</p>
+<p>这个没啥说的，知道原理就好</p>
+<hr>
+<h4 id="ATIM-FRAMES"><a href="#ATIM-FRAMES" class="headerlink" title="ATIM FRAMES"></a>ATIM FRAMES</h4><p>只在ad-hoc网络下使用，用于唤醒两个或多个STA直接通信但是是有一个接受方为省电模式的STA</p>
 
       
 
@@ -320,6 +325,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/04/29/8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          无线渗透复学（五）
+        
+      </div>
+    </a>
   
   
     <a href="/2020/04/27/6/" id="article-nav-older" class="article-nav-link-wrap">
@@ -469,6 +483,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">无线渗透 控制帧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">无线渗透 DATA FRAME</a>
               </li>
             
             <div class="clearfix"></div>
