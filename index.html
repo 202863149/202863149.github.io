@@ -180,43 +180,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。</p>
-<h2 id="MANAGEMENT-FRAME"><a href="#MANAGEMENT-FRAME" class="headerlink" title="MANAGEMENT FRAME"></a>MANAGEMENT FRAME</h2><p>用于协商和控制STA与AP之间的关系。</p>
-<hr>
-<h3 id="BEACON-FRAME"><a href="#BEACON-FRAME" class="headerlink" title="BEACON FRAME"></a>BEACON FRAME</h3><p>AP发的广播帧，通告无线网络的存在（BSSID&amp;&amp;SSID（可隐藏））</p>
-<h4 id="Capabilities-Information"><a href="#Capabilities-Information" class="headerlink" title="Capabilities Information"></a>Capabilities Information</h4><ul>
-<li>ESS：是否为AP发出的beacon帧</li>
-<li>IBSS：是否为STA与STA直接联系的网络中STA发出</li>
-<li>Privacy：该AP/STA是否支持WEP/WPA加密</li>
-</ul>
-<h4 id="Tag-parameters"><a href="#Tag-parameters" class="headerlink" title="Tag parameters"></a>Tag parameters</h4><ul>
-<li>SSID Tag ：可隐藏但是Tag Length不会为0</li>
-<li>Supported Rates Tag：支持的标准速率，可判断支持802.11的版本</li>
-<li>DS Tag：可查看信道</li>
-<li>TIM：AP用来通知省电模式STA的位</li>
-</ul>
-<hr>
-<h4 id="PROBE-REQUEST-FRAME"><a href="#PROBE-REQUEST-FRAME" class="headerlink" title="PROBE REQUEST FRAME"></a>PROBE REQUEST FRAME</h4><p>STA发送的扫描AP的帧，发现已连过和未连过的AP</p>
-<ul>
-<li><p>SSID</p>
-</li>
-<li><p>Supported Rate</p>
-</li>
-<li><p>Extend Supported Rate</p>
-<p><strong>只要SSID和支持的工作速率相同，AP就认为STA在找自己</strong></p>
-</li>
-</ul>
-<hr>
-<h4 id="AUTHENTICATION-FRAMES"><a href="#AUTHENTICATION-FRAMES" class="headerlink" title="AUTHENTICATION FRAMES"></a>AUTHENTICATION FRAMES</h4><p>身份认证帧</p>
-<ul>
-<li>Authentication Algorithm：算法，0||1 是否有共享密钥</li>
-<li>Authentication Seq：每次身份认证Seq唯一，2字节 0-65535</li>
-<li>status Code ：成功||失败</li>
-<li>Challenge text：只有共享密钥方式才有</li>
-</ul>
-<p><strong>注：</strong>可以有加密方式但是不一定有共享密钥，也可以空密码</p>
-<hr>
-<h4 id="ASSOCIATION-REASSOCIATION-FRAMES"><a href="#ASSOCIATION-REASSOCIATION-FRAMES" class="headerlink" title="ASSOCIATION/REASSOCIATION FRAMES"></a>ASSOCIATION/REASSOCIATION FRAMES</h4><p>身份认证成功后，STA和AP进行关联</p>
-
+        
+          <a class="article-more-a" href="/2020/04/27/7/#more">more >></a>
+        
       
 
       
