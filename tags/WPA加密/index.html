@@ -6,20 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>无线渗透复学（七） | 冯某人的个人博客</title>
+  <title>Tag: WPA加密 | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总记书接上回。。 WEP和WPA并不是一种加密算法，而是一套。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="无线渗透复学（七）">
-<meta property="og:url" content="http://yoursite.com/2020/04/29/10/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="冯某人的个人博客">
+<meta property="og:url" content="http://yoursite.com/tags/WPA%E5%8A%A0%E5%AF%86/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
-<meta property="og:description" content="总记书接上回。。 WEP和WPA并不是一种加密算法，而是一套。">
 <meta property="og:locale" content="ch">
-<meta property="article:published_time" content="2020-04-29T11:40:41.000Z">
-<meta property="article:modified_time" content="2020-04-30T13:16:03.721Z">
 <meta property="article:author" content="冯某人">
-<meta property="article:tag" content="无线渗透">
-<meta property="article:tag" content="WPA加密">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="冯某人的个人博客" type="application/atom+xml">
@@ -160,132 +154,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-10" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      无线渗透复学（七）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/04/29/10/" class="archive-article-date">
+  	<time datetime="2020-04-29T11:40:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/04/29/10/">无线渗透复学（七）</a>
     </h1>
   
 
-<!--显示阅读次数-->
-
-  <br/>
-  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
-  <span class="icon-sort"></span>
-  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
-  	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
-  </span>
-  </a>
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/04/29/10/" class="archive-article-date">
-  	<time datetime="2020-04-29T11:40:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。。</p>
-<p>WEP和WPA并不是一种加密算法，而是一套。</p>
-<a id="more"></a>
-
-<h2 id="WPA安全系统"><a href="#WPA安全系统" class="headerlink" title="WPA安全系统"></a>WPA安全系统</h2><ul>
-<li><p>TKIP – WPA1 较之WEP可动态改变密钥</p>
-<ul>
-<li>都采用逐包使用密钥流加密</li>
-<li>起始向量从24位变为48位</li>
-<li>还是RC4的流加密数据</li>
-<li>帧计数器避免重放攻击</li>
-<li>兼容早期版本硬件</li>
-</ul>
-</li>
-<li><p>CCMP – WPA2  与WPA1加密套件不同而已</p>
-<ul>
-<li>不兼容早期版本硬件</li>
-<li>AES加密取代了RC4</li>
-</ul>
-</li>
-<li><p>两种安全类型</p>
-<ul>
-<li>WPA个人：使用预设共享密钥实现身份验证</li>
-<li>WPA企业：使用802.1X和Radius服务器实现A（身份认证）A（权限管理）A（记账）【集中身份验证】</li>
-</ul>
-</li>
-</ul>
-<p><strong>客户端到AP之间用的时EAP协议，AP到服务器之间用的是Radius协议</strong> （EAP只是一个框架，内含各种协议，可以自行选择不同协议混用。）</p>
-<p>*企业SAA无线架构：被认证者为supplicant，认证者为authenticator，身份认证服务器为authentication sever</p>
-<hr>
-<h2 id="WPA1企业连接过程（802-1X）"><a href="#WPA1企业连接过程（802-1X）" class="headerlink" title="WPA1企业连接过程（802.1X）"></a>WPA1企业连接过程（802.1X）</h2><p>PS：刚刚发现现在的win10都不支持WPA1企业了，害，果然是学习资料很老了。。【吐血】 而且现在都已经有WPA3-个人了，，害，学习之路还是很漫长的呀【哭】</p>
-<ul>
-<li><p>协商安全协议</p>
-</li>
-<li><p>身份认证</p>
-<ul>
-<li><p>基于：</p>
-<ul>
-<li>EAP-TLS，需要客户端和服务器证书</li>
-<li>EAP-TTLS</li>
-<li>PEAP混合身份验证，只需要服务器证书</li>
-</ul>
-</li>
-<li><p>客户选择身份认证方式</p>
-</li>
-<li><p>AP发送验证信息给Radius Sever</p>
-</li>
-<li><p>Radius Sever返回“Radius Accept”表示认证成功</p>
-<ul>
-<li>其中包含Master Key（MK）</li>
-</ul>
-</li>
-<li><p>AP通过EAP消息通知STA认证成功</p>
-</li>
-</ul>
-</li>
-<li><p>密钥分发和验证</p>
-</li>
-<li><p>数据加密完整性</p>
-</li>
-</ul>
-<h1 id="WPA-PSK"><a href="#WPA-PSK" class="headerlink" title="WPA-PSK"></a>WPA-PSK</h1><ul>
-<li>协商安全协议</li>
-<li>密钥分发和验证</li>
-<li>数据加密完整性</li>
-</ul>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -301,115 +199,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/29/10/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/04/30/11/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          大学物理下册之热学
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/04/29/9/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">无线复学（六）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -435,9 +237,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
