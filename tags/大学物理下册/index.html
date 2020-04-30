@@ -6,25 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>无线渗透复学（二） | 冯某人的个人博客</title>
+  <title>Tag: 大学物理下册 | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总记接上篇">
-<meta property="og:type" content="article">
-<meta property="og:title" content="无线渗透复学（二）">
-<meta property="og:url" content="http://yoursite.com/2020/04/26/5/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="冯某人的个人博客">
+<meta property="og:url" content="http://yoursite.com/tags/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E4%B8%8B%E5%86%8C/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
-<meta property="og:description" content="总记接上篇">
 <meta property="og:locale" content="ch">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/5/issue2.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/5/issue3.png">
-<meta property="og:image" content="http://yoursite.com/2020/04/26/5/issue4.png">
-<meta property="article:published_time" content="2020-04-25T23:56:21.000Z">
-<meta property="article:modified_time" content="2020-04-29T02:16:08.791Z">
 <meta property="article:author" content="冯某人">
-<meta property="article:tag" content="无线渗透">
-<meta property="article:tag" content="802.11头">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/04/26/5/issue2.png">
   
     <link rel="alternative" href="/atom.xml" title="冯某人的个人博客" type="application/atom+xml">
   
@@ -164,280 +154,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-5" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      无线渗透复学（二）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/04/30/11/" class="archive-article-date">
+  	<time datetime="2020-04-30T06:10:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/04/30/11/">大学物理下册之热学</a>
     </h1>
   
 
-<!--显示阅读次数-->
-
-  <br/>
-  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
-  <span class="icon-sort"></span>
-  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
-  	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
-  </span>
-  </a>
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/04/26/5/" class="archive-article-date">
-  	<time datetime="2020-04-25T23:56:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>接上篇</p>
-<a id="more"></a>
-
-<h2 id="RADIOTAP头部（作了解）"><a href="#RADIOTAP头部（作了解）" class="headerlink" title="RADIOTAP头部（作了解）"></a>RADIOTAP头部（作了解）</h2><p>不在802.11标准之内，由网卡驱动添加在802.11头之前，传递额外信息，厂家可自定义。</p>
-<hr>
-<ul>
-<li>Head vision&amp;pad：占位用</li>
-<li>Head length：标记radio头部起始位置</li>
-<li>present flags：1||0表示数据位每一位的有无，默认32位，Ext为1则为有拓展，再加32位，拓展由厂家定义。</li>
-</ul>
-<h1 id="802-11头部（重点）"><a href="#802-11头部（重点）" class="headerlink" title="802.11头部（重点）"></a>802.11头部（重点）</h1><p><strong>重点研究MAC层头部–了解头部帧的作用。</strong></p>
-<hr>
-<ul>
-<li><p><strong>Header（7段，30字节）</strong></p>
-<ol>
-<li><p><strong>Frame control（11段，2字节）：帧控</strong></p>
-<ul>
-<li><p>Protocol Version（2位）：协议版本（00||01||10||11）</p>
-</li>
-<li><p>Type（2）：无线数据帧类型（管理0or控制1or数据2）</p>
-</li>
-<li><p>Subtype（4）：对帧类型继续进行划分，即每个类型有多个子类型</p>
-<p><img src="/2020/04/26/5/issue2.png" alt></p>
-</li>
-<li><p>To Ds（1）：station发向AP</p>
-</li>
-<li><p>From Ds（1）：AP发向station</p>
-<p><img src="/2020/04/26/5/issue3.png" alt></p>
-<p><strong>SA</strong>：发送给AP的发起端的mac地址</p>
-<p><img src="/2020/04/26/5/issue4.png" alt="issue4"></p>
-<p><strong>Mesh</strong>：是一种网状的无线组网技术，可以存在多个AP互相交叉连接，可以使工作站在网内漫游。</p>
-</li>
-<li><p>More fragments（1）：表示是否还有后续</p>
-<ul>
-<li>值为1时表示有后续分段，可能是Data或Management帧类型。只有单播接收地址（48位mac地址）的帧会被分段，广播地址（6字节）不会</li>
-</ul>
-</li>
-<li><p>Retry（1）：为1为重传帧，可能是Data或Management帧类型，接收端进程使用此值防止帧重复。</p>
-</li>
-<li><p>Power Mgmt（1）：活动模式0/省电模式1</p>
-<ul>
-<li>STA处于省电模式时向关联的AP发送值为1的帧（AP从不使用此字段），<strong>省电模式下STA几乎不接受数据（除唤醒之类的帧），发送给它的Data帧由AP暂存。</strong></li>
-</ul>
-</li>
-<li><p>More Data（1）：当AP缓存了至少一个MSDU（Mac层服务基础单元）时，会向省电模式的STA发送该值为1的帧，表示有数据要传，此后STA唤醒自己并向AP发送PS-Poll帧，取回AP暂存的数据，也用于AP有更多广播/多播帧需要发送的情况</p>
-</li>
-<li><p>WEP（Protected Frame）（1）：可能是Data或Management帧类型，表示MSDU是否被加密；也表示PSK身份验证的第三号帧；数据帧为空时置为0。</p>
-</li>
-<li><p>Order（1）：通常为0（可以不按顺序传输），1表示数据必须按严格顺序处理（QoS无线服务质量控制时常用）。</p>
-</li>
-</ul>
-</li>
-<li><p>Duration/ID（2字节）：</p>
-<ul>
-<li>所有的控制帧都使用该字段，其作用随类型和子类型变化有所不同；</li>
-<li>帧类型为PS Poll时，表示STA关联的AID（association identity）；</li>
-<li>其他情况下作为一种载波侦听机制，表示接收下一帧之前需要保持的时间间隔，用于NAV（Network Allocation Vector）计算，单位是微秒。</li>
-</ul>
-</li>
-<li><p>Address1（6字节）↘</p>
-</li>
-<li><p>Address2（6字节）→  station||AP||…<strong>Mac地址</strong></p>
-</li>
-<li><p>Address3（6字节）↗</p>
-</li>
-<li><p>Sequence control（2字节）</p>
-<ul>
-<li>Sequence Number（12位）：分段后的分段号</li>
-<li>Fragment Number（4位）：分段号</li>
-</ul>
-</li>
-<li><p>Address3（6字节）</p>
-<p><strong>注:BSSID为AP Mac地址。当AP支持多BSS时随机生成BSSID。</strong></p>
-</li>
-</ol>
-</li>
-<li><p>Date：未加密的MSDU最大长度为2304字节，其中包含256字节的上层头信息和被传递的2048字节，不同的加密方法会增加一定的长度：</p>
-<ul>
-<li><p>WEP：+8 = 2313</p>
-</li>
-<li><p>TKIP（WPA1）：+20 = 2324</p>
-</li>
-<li><p>CCMP（WPA2）：+16 = 2320</p>
-<p><strong>注：控制型的帧没有数据（Data）段</strong>。</p>
-</li>
-</ul>
-</li>
-<li><p>Fcs 奇偶差错校验：对Header和Data做CRC计算的值（只对单播帧有效，广播和多播帧可能被接收。）</p>
-</li>
-</ul>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">大学物理下册</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">802.11头</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">热学</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/26/5/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/04/27/6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          无线渗透复学（三）
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/04/25/4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">无线渗透复学（一）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -463,9 +237,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
