@@ -16,7 +16,7 @@
 <meta property="og:description" content="总记书接上回。">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2020-05-02T01:08:36.000Z">
-<meta property="article:modified_time" content="2020-05-02T03:28:57.443Z">
+<meta property="article:modified_time" content="2020-05-02T03:42:02.489Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="无线渗透">
 <meta property="article:tag" content="MAC地址绑定攻击">
@@ -238,6 +238,21 @@
 <li><p>等，也可以一边等一边破解</p>
 </li>
 <li><p>aircrack-ng wep-01.cap就行了</p>
+</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li>假身份认证要使用真实的mac地址；</li>
+<li>信道要正确；</li>
+<li>WPA不支持假身份认证</li>
+<li>Deauthentication在无客户端的情况下攻击无效<ul>
+<li>与被攻击者要使用相同的无线标准</li>
+</ul>
+</li>
+<li>aireplay-ng不指定-c参数时，以广播攻击所有的客户端<ul>
+<li>每次攻击发128个包，AP和STA55开</li>
+<li>客户端可能拒绝广播帧，建议指定客户端</li>
+</ul>
 </li>
 </ul>
 
