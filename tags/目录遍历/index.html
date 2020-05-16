@@ -6,20 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>无线渗透复学（十二） | 冯某人的个人博客</title>
+  <title>Tag: 目录遍历 | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总记书接上回。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="无线渗透复学（十二）">
-<meta property="og:url" content="http://yoursite.com/2020/05/03/16/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="冯某人的个人博客">
+<meta property="og:url" content="http://yoursite.com/tags/%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
-<meta property="og:description" content="总记书接上回。">
 <meta property="og:locale" content="ch">
-<meta property="article:published_time" content="2020-05-03T06:27:01.000Z">
-<meta property="article:modified_time" content="2020-05-03T07:45:10.395Z">
 <meta property="article:author" content="冯某人">
-<meta property="article:tag" content="无线渗透">
-<meta property="article:tag" content="WPS攻击">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="冯某人的个人博客" type="application/atom+xml">
@@ -160,243 +154,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-16" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      无线渗透复学（十二）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/05/15/23/" class="archive-article-date">
+  	<time datetime="2020-05-15T06:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/05/15/23/">手动漏洞挖掘（二）</a>
     </h1>
   
 
-<!--显示阅读次数-->
-
-  <br/>
-  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
-  <span class="icon-sort"></span>
-  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
-  	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
-  </span>
-  </a>
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/03/16/" class="archive-article-date">
-  	<time datetime="2020-05-03T06:27:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。</p>
-<a id="more"></a> 
-
-<h2 id="WPS攻击（WIRELESS-PROTECTED-SETUP）"><a href="#WPS攻击（WIRELESS-PROTECTED-SETUP）" class="headerlink" title="WPS攻击（WIRELESS PROTECTED SETUP）"></a>WPS攻击（WIRELESS PROTECTED SETUP）</h2><p>简介：</p>
-<ul>
-<li>WPS是通过pin码来简化无线接入的操作，无需记住PSK</li>
-<li>路由器和网卡各按一个按钮就能接入无线</li>
-<li>PIN码是分别前后各4位的2段共8位数字</li>
-</ul>
-<p>安全漏洞：</p>
-<ul>
-<li>接入发起方可以根据路由器的返回信息判断前4位是否正确</li>
-<li>而PIN码的后4位只有1000种定义的组合（最后一位是checksum）</li>
-<li>所以全部穷举破解只需要11000此尝试<ul>
-<li>PSK： 218，340，105，584，896用PSK两百万亿次才能破解</li>
-</ul>
-</li>
-<li>标准本身没有设计锁定机制。目前多个厂商已实现锁定机制</li>
-</ul>
-<hr>
-<ul>
-<li><p>扫描支持WPS的AP：</p>
-<ul>
-<li>wash -i wlanXmon </li>
-<li>airodump-ng wlanXmon –wps</li>
-</ul>
-</li>
-<li><p>爆破PIN码：</p>
-<ul>
-<li>reaver -i wlanXmon -b <AP mac> -vv</AP></li>
-</ul>
-</li>
-<li><p>秒破PIN码</p>
-<ul>
-<li>reaver -i wlanXmon -b <AP mac> -vv -K 1</AP></li>
-<li>pixiewps</li>
-<li>只适用于固定厂商的芯片，成功率很低</li>
-</ul>
-</li>
-<li><p>已知PIN码下：</p>
-<ul>
-<li>reaver -i wlanXmon -b <AP mac> -vv -p PIN码  得PSK</AP></li>
-</ul>
-</li>
-<li><p>一旦触发锁定，可尝试耗尽AP连接数，令其重启并解除WPS锁定</p>
-<ul>
-<li>建立大量的fakeauthentication</li>
-<li>很麻烦费时间，没试过效率低</li>
-</ul>
-</li>
-<li><p>综合自动化无线密码破解工具 wifite</p>
-</li>
-</ul>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">WPS攻击</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">目录遍历</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/03/16/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/05/03/17/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          无线渗透复学（十三）
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/05/03/15/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">无线渗透复学（十一）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -422,9 +237,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
