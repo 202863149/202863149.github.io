@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>28 | 冯某人的个人博客</title>
+  <title>网络基础课程（二） | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="28">
+  <meta name="description" content="总记接上文，今天是学网络通信协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络基础课程（二）">
 <meta property="og:url" content="http://yoursite.com/2020/05/28/28/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
+<meta property="og:description" content="总记接上文，今天是学网络通信协议">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2020-05-28T11:28:53.000Z">
-<meta property="article:modified_time" content="2020-05-28T11:28:53.600Z">
+<meta property="article:modified_time" content="2020-05-28T13:31:04.145Z">
 <meta property="article:author" content="冯某人">
+<meta property="article:tag" content="网络基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="冯某人的个人博客" type="application/atom+xml">
@@ -163,7 +166,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      28
+      网络基础课程（二）
     </h1>
   
 
@@ -187,7 +190,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>接上文，今天是学网络通信协议</p>
+<a id="more"></a>
+
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>数据链路层mac48位</p>
+<p>网络层IP32位</p>
+<ul>
+<li>IP协议报文结构：<ul>
+<li>第一层：版本|头长度|DS Field<strong>|16|</strong>总长度</li>
+<li>第二层：             标识                 <strong>|16|</strong>标志符|片偏移量</li>
+<li>第三层：ttl存活时间| 协议字段<strong>|16|</strong>Header Checksum（FCS）</li>
+<li>第四层：源地址</li>
+<li>第五层：目的地址</li>
+<li>第六层：填充</li>
+</ul>
+</li>
+</ul>
+<p><strong>补充：</strong> </p>
+<ul>
+<li><p>这里标识符用来判断是否为同一个数据包的分片，标识符标识是否为最后一个包（0），包偏移量用来标识每一个分片的位置</p>
+</li>
+<li><p>DS Field 是在Qos中标识转发优先级</p>
+</li>
+</ul>
+<p>在后面就是IP地址的划分了，之前学过哈数通基础入门里，海星海星，giao</p>
+
       
 
       
@@ -216,6 +243,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
