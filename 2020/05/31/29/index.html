@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>网络基础课程（二） | 冯某人的个人博客</title>
+  <title>网络基础课程（三） | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总记接上文，今天是学网络通信协议">
+  <meta name="description" content="总记接上篇，今天讲ICMP协议。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络基础课程（二）">
-<meta property="og:url" content="http://yoursite.com/2020/05/28/28/index.html">
+<meta property="og:title" content="网络基础课程（三）">
+<meta property="og:url" content="http://yoursite.com/2020/05/31/29/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
-<meta property="og:description" content="总记接上文，今天是学网络通信协议">
+<meta property="og:description" content="总记接上篇，今天讲ICMP协议。">
 <meta property="og:locale" content="ch">
-<meta property="article:published_time" content="2020-05-28T11:28:53.000Z">
-<meta property="article:modified_time" content="2020-05-29T11:49:55.313Z">
+<meta property="article:published_time" content="2020-05-31T01:02:13.000Z">
+<meta property="article:modified_time" content="2020-05-31T03:45:15.001Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="网络基础">
 <meta name="twitter:card" content="summary">
@@ -159,14 +159,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-28" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-29" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      网络基础课程（二）
+      网络基础课程（三）
     </h1>
   
 
@@ -182,43 +182,74 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2020/05/28/28/" class="archive-article-date">
-  	<time datetime="2020-05-28T11:28:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-28</time>
+        <a href="/2020/05/31/29/" class="archive-article-date">
+  	<time datetime="2020-05-31T01:02:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>接上文，今天是学网络通信协议</p>
+        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>接上篇，今天讲ICMP协议。</p>
 <a id="more"></a>
 
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>数据链路层mac48位</p>
-<p>网络层IP32位</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ul>
+<li><p>ICMP在网络层</p>
+</li>
+<li><p>作用：底层网络互通控制；差错检测；故障排错；ICMP重定向</p>
+</li>
+<li><p>type字段和code字段：</p>
 <ul>
-<li>IP协议报文结构：<ul>
-<li>第一层：版本|头长度|DS Field<strong>|16|</strong>总长度</li>
-<li>第二层：             标识                 <strong>|16|</strong>标志符|片偏移量</li>
-<li>第三层：ttl存活时间| 协议字段<strong>|16|</strong>Header Checksum（FCS）</li>
-<li>第四层：源地址</li>
-<li>第五层：目的地址</li>
-<li>第六层：填充</li>
+<li>0  0：Echo Reply</li>
+<li>3  0：网络不可达</li>
+<li>3  1：主机不可达</li>
+<li>3  2：协议不可达</li>
+<li>5  0：重定向</li>
+<li>8  0：Echo request</li>
 </ul>
 </li>
-</ul>
-<p><strong>补充：</strong> </p>
+<li><p>ICMP应用——ping：连通性的测试</p>
 <ul>
-<li><p>这里标识符用来判断是否为同一个数据包的分片，标识符标识是否为最后一个包（0），包偏移量用来标识每一个分片的位置</p>
+<li>-a  指定源IP地址</li>
+<li>-h 指定ttl值</li>
+<li>-c 发送Request次数</li>
+</ul>
 </li>
-<li><p>DS Field 是在Qos中标识转发优先级</p>
+<li><p>ICMP应用——Tracert：路径追踪</p>
 </li>
 </ul>
-<p>ICMP 0X01 1</p>
-<p>IGMP 0X02 2</p>
-<p>TCP 0X06 6</p>
-<p>UDP 0X11 17</p>
-<p>OSPF 0X59 59</p>
-<p>在后面就是IP地址的划分了，之前学过哈数通基础入门里，海星海星，giao</p>
+<hr>
+<h3 id="ARP（32位）"><a href="#ARP（32位）" class="headerlink" title="ARP（32位）"></a>ARP（32位）</h3><ul>
+<li>​        硬件类型         |16|协议类型</li>
+<li>mac地址|协议长度|16|报文内容</li>
+<li>源MAC地址</li>
+<li>目的MAC地址</li>
+<li>源IP</li>
+<li>目的IP</li>
+</ul>
+<p><strong>ARP代理</strong> ：同一网段，不同网络类型之间的通信</p>
+<p><strong>免费ARP</strong>  ：检测IP地址是否有冲突</p>
+<ul>
+<li>实现：把目的IP设置成自己的IP</li>
+<li>场景</li>
+</ul>
+<hr>
+<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><ul>
+<li><strong>TCP传输控制协议</strong> （20最多60字节）<ul>
+<li>FTP:20  21</li>
+<li>HTTP:80</li>
+<li>TELNET:23</li>
+<li>SMTP:25</li>
+</ul>
+</li>
+<li>*<em>UDP用户数据包协议 *</em> <ul>
+<li>面向无连接的传输层协议，传输可靠性没有保证</li>
+<li>头部占8字节</li>
+<li>占资源小，处理性能高</li>
+<li>一些时延敏感的流量</li>
+</ul>
+</li>
+</ul>
 
       
 
@@ -309,7 +340,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/28/28/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/31/29/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -323,18 +354,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/31/29/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          网络基础课程（三）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/27/27/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">网络基础课程（一）</div>
+    <a href="/2020/05/28/28/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">网络基础课程（二）</div>
       <i class="icon-circle-right"></i>
     </a>
   
