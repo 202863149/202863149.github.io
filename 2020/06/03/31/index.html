@@ -16,7 +16,7 @@
 <meta property="og:description" content="总记接上篇，今天学静态路由协议基础">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2020-06-03T12:50:46.000Z">
-<meta property="article:modified_time" content="2020-07-18T03:18:11.204Z">
+<meta property="article:modified_time" content="2020-07-18T07:52:00.682Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="网络基础">
 <meta name="twitter:card" content="summary">
@@ -240,7 +240,7 @@
 </li>
 <li><p>报文类型5种：</p>
 <ul>
-<li>Hello</li>
+<li>Hello（发现和维护邻居关系）</li>
 <li>DD(Database Description)</li>
 <li>LSR(Link State Request)</li>
 <li>LSU(Link State Update)</li>
@@ -249,21 +249,24 @@
 </li>
 <li><p><strong>配置：</strong></p>
 <ul>
-<li><strong>router id</strong></li>
-<li><strong>ospf 进程号（100.200….）</strong></li>
-<li><strong>area 0</strong></li>
+<li>*<em>router id *</em> </li>
+<li><strong>ospf 进程号（100.200….）</strong> </li>
+<li><strong>area 0</strong> </li>
 <li><strong>network 直连网段 反掩码 —宣告直连网段</strong> </li>
+<li><strong>进入接口：ospf authentication-mode ? 1 cipher ***</strong> <strong>接口加密认证</strong>  </li>
+<li><strong>区域内：authentication-mode ? 1 cipher ***</strong> <strong>区域加密认证</strong> </li>
 </ul>
 </li>
+<li><p>224.0.0.5（DRother监听）和224.0.0.6（DR/BDR监听）为广播地址</p>
+</li>
 </ul>
-<hr>
 <h2 id="6-7日学习笔记（链路聚合、VLAN）"><a href="#6-7日学习笔记（链路聚合、VLAN）" class="headerlink" title="6.7日学习笔记（链路聚合、VLAN）"></a>6.7日学习笔记（链路聚合、VLAN）</h2><p><strong>上午：</strong> </p>
 <p>链路聚合技术将多个物理接口捆绑为一个逻辑接口，来达到增加链路带宽的目的，用在核心结点。</p>
 <p>结合线路为Eth-Trunk （1-63）</p>
-<p>模式：</p>
+<p>模式：    </p>
 <ul>
 <li>手工负载分担</li>
-<li>LACP  </li>
+<li>LACP </li>
 </ul>
 <p><strong>VLAN：</strong> </p>
 <p>虚机网络将物理网络划分成逻辑网络。隔离广播域。</p>
@@ -288,7 +291,6 @@
 <ul>
 <li>接收数据：是否在允许列表：在-untagged-添加pvid；tag-接收</li>
 <li>发送数据：是否在允许列表：在–看具体配置是否带帧 </li>
-<li>。</li>
 </ul>
 <p><strong>下午：</strong> </p>
 
@@ -394,6 +396,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/07/26/32/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          32.操作系统及数据库安全基础（一）
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/02/30/" id="article-nav-older" class="article-nav-link-wrap">
@@ -651,6 +662,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">XSS漏洞挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">操作系统基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>冯某人的个人博客</title>
+  <title>32.操作系统及数据库安全基础（一） | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="冯某人的个人博客">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="总记第二阶段操作系统及数据库基础开始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="32.操作系统及数据库安全基础（一）">
+<meta property="og:url" content="http://yoursite.com/2020/07/26/32/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
+<meta property="og:description" content="总记第二阶段操作系统及数据库基础开始">
 <meta property="og:locale" content="ch">
+<meta property="article:published_time" content="2020-07-26T01:06:58.000Z">
+<meta property="article:modified_time" content="2020-07-30T01:34:01.563Z">
 <meta property="article:author" content="冯某人">
+<meta property="article:tag" content="操作系统基础">
+<meta property="article:tag" content="windows">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="冯某人的个人博客" type="application/atom+xml">
@@ -154,37 +161,276 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-22" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-32" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/14/22/">大学物理下册波动光学</a>
+    <h1 class="article-title" itemprop="name">
+      32.操作系统及数据库安全基础（一）
     </h1>
   
 
 <!--显示阅读次数-->
 
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+  	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
 <!--显示阅读次数完毕-->
         
-        <a href="/2020/05/14/22/" class="archive-article-date">
-  	<time datetime="2020-05-14T06:15:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
+        <a href="/2020/07/26/32/" class="archive-article-date">
+  	<time datetime="2020-07-26T01:06:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>电子截图笔记第四弹~</p>
-        
-          <a class="article-more-a" href="/2020/05/14/22/#more">more >></a>
-        
+        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>第二阶段操作系统及数据库基础开始</p>
+<a id="more"></a>
+
+<h2 id="总体前瞻"><a href="#总体前瞻" class="headerlink" title="总体前瞻"></a>总体前瞻</h2><ul>
+<li>网络协议</li>
+<li>数据系统 Windows、Linux</li>
+<li>数据库（MySQL、sql server、Oracle、）</li>
+<li>中间件、web应用程序（IIS、apache、nagix、weblogic）</li>
+<li>语言PHP JAVA JSP</li>
+</ul>
+<p>网站–网站群</p>
+<hr>
+<h2 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h2><h3 id="基本命令："><a href="#基本命令：" class="headerlink" title="基本命令："></a>基本命令：</h3><ul>
+<li><p>ipconfig：</p>
+<ul>
+<li>/all:显示所有</li>
+<li>/flushdns：刷新DNS解析缓存</li>
+<li>/release：释放ip地址（DHCP下）</li>
+<li>/renew：重新获取（DHCP下）</li>
+</ul>
+</li>
+<li><p>ping：</p>
+<ul>
+<li>-t：不停ping</li>
+<li><strong>-a：解析主机名</strong> </li>
+<li>-n X：ping X次</li>
+<li>-l X：一次发送X大的包</li>
+<li>-i X：定义TTL值（不同操作系统默认TTL值不同）</li>
+</ul>
+</li>
+<li><p>netstat：</p>
+<ul>
+<li>-a：显示所有连接和侦听端口</li>
+<li>-n：以数字形式显示地址和端口</li>
+<li>-o</li>
+</ul>
+</li>
+<li><p>systeminfo：显示主机信息</p>
+<ul>
+<li>/s：指定连接到的远程系统</li>
+<li>/FO：指定显示结果的格式（默认即可）</li>
+<li>/u 用户名：指定用户名</li>
+<li>/p 密码：指定密码</li>
+</ul>
+</li>
+</ul>
+<h4 id="用户和组"><a href="#用户和组" class="headerlink" title="用户和组"></a>用户和组</h4><ul>
+<li>net user :<ul>
+<li>/add</li>
+<li>/delete </li>
+<li>/active: yes/no激活账号</li>
+<li>/Expires：nov,3,2018</li>
+<li>/time：M-F,8:00-22:00;SA-SU,19:00-21:00 设置使用时间</li>
+<li><strong>创建隐藏账户：net user user_name$ user_password /add</strong> </li>
+<li>将用户加入组：net localgroup administrators XXX /add</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>缺省值：再表中创建列或插入数据时，无赋值或赋于事先设定好的</li>
+<li>规则：对表中数据信息的限制，限制的是列</li>
+<li>触发器：由事件触发，强制服从复杂的业务规则</li>
+</ul>
+<h3 id="SQL语言功能分类"><a href="#SQL语言功能分类" class="headerlink" title="SQL语言功能分类"></a>SQL语言功能分类</h3><ul>
+<li><p>数据查询语言DQL</p>
+</li>
+<li><p>数据操纵语言DML：insert；update；delete</p>
+</li>
+<li><p>数据定义语言DDL：创建、修改或删除数据库<strong>对象</strong> </p>
+<ul>
+<li>create table：创建数据库表</li>
+<li>alter table：更改表结构，添加、删除、修改列长度</li>
+<li>drop table：删除表</li>
+<li>create index：在表上创建索引</li>
+<li>drop index：删除索引</li>
+</ul>
+</li>
+<li><p>数据控制语言DCL：</p>
+<ul>
+<li>grant：授予访问权限</li>
+<li>revoke：撤销访问权限</li>
+<li>commit：提交事务</li>
+<li>rollback</li>
+</ul>
+</li>
+</ul>
+<h3 id="MySQL（3306）"><a href="#MySQL（3306）" class="headerlink" title="MySQL（3306）"></a>MySQL（3306）</h3><p>参数：</p>
+<ul>
+<li>-u：用户名</li>
+<li>-p：密码</li>
+<li>-P：端口号</li>
+<li>-h：主机地址</li>
+<li>-D：指定数据库</li>
+</ul>
+<p>表结构：</p>
+<ul>
+<li>information_schema<ul>
+<li>schemata：所有数据库的名字</li>
+</ul>
+</li>
+<li>tables：所有表的名字<ul>
+<li>table_schema：表所属数据库的名字</li>
+<li>table_name：表的名字</li>
+</ul>
+</li>
+<li>columns：<ul>
+<li>table_schema：字段所属数据库的名字</li>
+<li>table_name：字段所属表的名字</li>
+<li>column_name：字段的名字</li>
+</ul>
+</li>
+</ul>
+<p>安全配置:</p>
+<ul>
+<li>补丁安装：打补丁</li>
+<li>用户密码：检查密码强度</li>
+<li>数据库授权：根据权限最小化原则授予用户权限</li>
+<li>网络连接：禁止TCP/IP连接增加安全性</li>
+<li>日志审核：开启日志</li>
+<li>服务降权：创建MySQL账号，运行时不使用最高权限管理员账号</li>
+</ul>
+<h3 id="MSSQL（1433）"><a href="#MSSQL（1433）" class="headerlink" title="MSSQL（1433）"></a>MSSQL（1433）</h3><p>特点：支持对称多处理器结构；高性能设计；系统管理先进；事务管理能力强</p>
+<p>数据库结构:</p>
+<ul>
+<li>master：包括所有配置信息，用户登录信息，当前服务器运行过程的信息</li>
+<li>model：所有用户数据库的模板</li>
+<li>msdb：存储任务调度、报警、操作员、所有备份历史</li>
+<li>tempdb：保存所有的临时表</li>
+</ul>
+<h3 id="ORACLE（1521）"><a href="#ORACLE（1521）" class="headerlink" title="ORACLE（1521）"></a>ORACLE（1521）</h3><h3 id="PostgreSQL（5432）"><a href="#PostgreSQL（5432）" class="headerlink" title="PostgreSQL（5432）"></a>PostgreSQL（5432）</h3><hr>
+<h3 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h3><ul>
+<li><p>增加数据</p>
+<ul>
+<li><p>insert into 表名（列名1，列名2…）</p>
+<p>values（值1,值2….）</p>
+</li>
+<li><p>insert into 表名</p>
+<p>set 列名1=值 1</p>
+<p>set 列名2=值2</p>
+<p>……</p>
+</li>
+</ul>
+</li>
+<li><p>修改数据</p>
+<ul>
+<li>update 表名 set 字段1=值1，字段2=值2…（where …）</li>
+</ul>
+</li>
+<li><p>删除数据</p>
+<ul>
+<li>delete from 表名 where ….</li>
+</ul>
+</li>
+<li><p>查询数据</p>
+<ul>
+<li>select … from 表名 where…</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据表操作（alter-table-表名）"><a href="#数据表操作（alter-table-表名）" class="headerlink" title="数据表操作（alter table 表名）"></a>数据表操作（alter table 表名）</h3><ul>
+<li><p>增添字段</p>
+<ul>
+<li>alter table 表名 add 新字段名 数据类型 （约束条件）（first|after）;</li>
+</ul>
+</li>
+<li><p>修改字段数据类型</p>
+<ul>
+<li>alter table 表名 modify 字段名 数据类型;</li>
+</ul>
+</li>
+<li><p>修改字段名称</p>
+<ul>
+<li>alter table 表名 change 旧字段名 新字段名 <strong>新数据类型</strong> ;</li>
+</ul>
+</li>
+<li><p>删除字段</p>
+<ul>
+<li>alter 表名 drop 字段名 ;</li>
+</ul>
+</li>
+<li><p>修改表名</p>
+<ul>
+<li>alter  table 旧表名 rename (to) 新表名;</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><ul>
+<li><p>创建用户</p>
+<ul>
+<li>create user 用户名@… identified by password ‘口令’</li>
+</ul>
+</li>
+<li><p>修改用户密码</p>
+<ul>
+<li>set password for user ‘…’@’…’ = password (‘’);</li>
+</ul>
+</li>
+<li><p>修改用户账号</p>
+<ul>
+<li>rename user ‘..’@’..’ to ‘..’@’..’;</li>
+</ul>
+</li>
+<li><p>删除用户</p>
+<ul>
+<li>drop user ‘..’@’..’;</li>
+</ul>
+</li>
+<li><p>权限管理</p>
+<ul>
+<li>grant 权限 on 库名|表名 to ‘..’@’..’;</li>
+<li>revoke 权限 on 库名|表名 from ‘..’@’..’;</li>
+</ul>
+</li>
+</ul>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -195,173 +441,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">大学物理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">操作系统基础</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机械振动</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/14/22/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-21" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/10/21/">大学物理下册热学</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/10/21/" class="archive-article-date">
-  	<time datetime="2020-05-10T00:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>物理截图笔记第三弹~</p>
-        
-          <a class="article-more-a" href="/2020/05/10/21/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">大学物理下册</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/10/21/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-20" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/07/20/">大学物理下册热学</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/07/20/" class="archive-article-date">
-  	<time datetime="2020-05-07T06:08:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>来了，物理截图笔记第二弹</p>
-        
-          <a class="article-more-a" href="/2020/05/07/20/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">大学物理下册</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">15章</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
@@ -370,16 +458,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/07/20/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/26/32/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/03/31/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">31.网络基础课程（五）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -399,595 +546,14 @@
 
 
 
-
-  
-    <article id="post-19" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/05/19/">数通基础学习笔记</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/05/19/" class="archive-article-date">
-  	<time datetime="2020-05-05T00:35:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>学网络的怎么能数通都不会呢，来来来，入个门先</p>
-        
-          <a class="article-more-a" href="/2020/05/05/19/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数通基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/05/19/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-18" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/04/18/">无线渗透复学（十四）</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/04/18/" class="archive-article-date">
-  	<time datetime="2020-05-04T01:27:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回</p>
-        
-          <a class="article-more-a" href="/2020/05/04/18/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">AIRCRACK-NG其他工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/04/18/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-17" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/03/17/">无线渗透复学（十三）</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/03/17/" class="archive-article-date">
-  	<time datetime="2020-05-03T12:06:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。</p>
-        
-          <a class="article-more-a" href="/2020/05/03/17/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">WPS及其他工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/03/17/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/03/16/">无线渗透复学（十二）</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/03/16/" class="archive-article-date">
-  	<time datetime="2020-05-03T06:27:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。</p>
-        
-          <a class="article-more-a" href="/2020/05/03/16/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">WPS攻击</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/03/16/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-15" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/03/15/">无线渗透复学（十一）</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/03/15/" class="archive-article-date">
-  	<time datetime="2020-05-03T00:09:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。</p>
-<p>本来这应该是昨天的任务，结果晚上去看lpl春决，今天补上。</p>
-        
-          <a class="article-more-a" href="/2020/05/03/15/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">WPA攻击</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/03/15/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-14" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/02/14/">无线渗透复学（十）</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/02/14/" class="archive-article-date">
-  	<time datetime="2020-05-02T01:08:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。</p>
-        
-          <a class="article-more-a" href="/2020/05/02/14/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MAC地址绑定攻击</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">WEP攻击</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/02/14/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/01/13/">无线渗透复学（九）</a>
-    </h1>
-  
-
-<!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/01/13/" class="archive-article-date">
-  	<time datetime="2020-05-01T12:27:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。</p>
-<p>这节课学AIREPLAY-NG</p>
-        
-          <a class="article-more-a" href="/2020/05/01/13/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">AIREPLAY-NG</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/01/13/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1013,8 +579,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
