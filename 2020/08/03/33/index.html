@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/08/03/33/2.PNG">
 <meta property="og:image" content="http://yoursite.com/2020/08/03/33/3.PNG">
 <meta property="article:published_time" content="2020-08-03T06:15:34.000Z">
-<meta property="article:modified_time" content="2020-08-03T06:47:49.652Z">
+<meta property="article:modified_time" content="2020-08-03T06:51:55.288Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="远程连接虚拟机失败">
 <meta name="twitter:card" content="summary">
@@ -201,7 +201,7 @@
 <p><img src="/2020/08/03/33/1.PNG" alt></p>
 <p><img src="/2020/08/03/33/2.PNG" alt></p>
 <p>这里我设置为172.16.12.0/24的网段，网关为172.16.12.2。</p>
-<p>下面进入控制面板\网络和 Internet\网络连接，打开VMnet8属性，双击internet学医版本4（TCP/IPv4），配置。</p>
+<p>下面进入控制面板\网络和 Internet\网络连接，打开VMnet8属性，双击internet协议版本4（TCP/IPv4），配置。</p>
 <p><img src="/2020/08/03/33/3.PNG" alt>IP地址、掩码设置后要与虚拟机在同一网段。</p>
 <p>此时进入虚拟机，ifconfig查看网络信息。如果虚拟机不在172.16.12.0/24网段内可以设置静态地址，只要网关掩码和IP配置后与物理机上的VMnet8在同一网段就行。</p>
 <p>此时虚拟机ping物理机，可能会出现无法ping通的情况，而ping网关是可以的，要注意重启物理网卡，禁用VMnet8再启用就好了。</p>
