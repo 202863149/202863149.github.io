@@ -16,11 +16,11 @@
 <meta property="og:description" content="总记第二阶段操作系统及数据库基础开始">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2020-07-26T01:06:58.000Z">
-<meta property="article:modified_time" content="2020-08-02T07:53:06.890Z">
+<meta property="article:modified_time" content="2020-08-04T08:49:35.782Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="操作系统基础">
 <meta property="article:tag" content="windows">
-<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="数据库，Linux">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="冯某人的个人博客" type="application/atom+xml">
@@ -407,14 +407,180 @@
 </ul>
 <hr>
 <h2 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h2><h3 id="DOS命令"><a href="#DOS命令" class="headerlink" title="DOS命令"></a>DOS命令</h3><ul>
-<li>ls</li>
-<li>cd</li>
-<li>man</li>
-<li>ifconfig<ul>
+<li><p>ls</p>
+</li>
+<li><p>cd</p>
+</li>
+<li><p>man</p>
+</li>
+<li><p>ifconfig</p>
+<ul>
 <li>ifconfig 网卡 address netmask 掩码</li>
 </ul>
 </li>
-<li>route add default gw 网关 x.x.x.x</li>
+<li><p>route add default gw 网关 x.x.x.x</p>
+</li>
+<li><p>cat /etc/shells 查看shell表</p>
+<ul>
+<li>/bin/sh<br>/bin/bash 比较常用的shell，跟随用户启动的程序<br>/usr/bin/sh<br>/usr/bin/bash<br>/bin/tcsh<br>/bin/csh</li>
+</ul>
+</li>
+<li><p>echo $SHELL 查看此时使用的shell应用</p>
+</li>
+<li><p>pstree 查看当前系统进程树</p>
+</li>
+<li><p>tty 查看登陆方式</p>
+</li>
+<li><p>which/whereis … 找位置</p>
+</li>
+<li><p>help 内嵌命令/man 外部命令</p>
+</li>
+<li><p>enable -a 查看所有内嵌命令</p>
+</li>
+</ul>
+<h3 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h3><ul>
+<li><p>终端分类</p>
+<ul>
+<li>物理终端：（/dev/console）直接连接到键盘、鼠标的</li>
+<li>虚拟终端：（/dev/tty）基于物理终端，以软件形式实现的登陆方式，以ctrl+alt+Fn[1-6]，centos </li>
+<li>模拟终端：（/dev/pts/）基于物理终端，以软件形式实现的登陆方式，以ssh、telnet、图像化界面打开的命令行</li>
+</ul>
+</li>
+<li><p>终端交互式接口</p>
+<ul>
+<li>GUI：图形界面，Gnome、KDE、Xfce</li>
+<li>CLI：命令行，shell（也是一个应用程序）</li>
+</ul>
+</li>
+<li><p>命令提示符</p>
+<ul>
+<li>#：管理员使用</li>
+<li>$：普通用户使用</li>
+</ul>
+</li>
+<li><p>命令</p>
+<ul>
+<li>shell内嵌命令，执行效率高，常驻内存</li>
+<li>shell外部命令，根据需要执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><ul>
+<li><p>文件分类</p>
+<ul>
+<li>元数据：目录/文件夹</li>
+<li>数据：文件</li>
+</ul>
+</li>
+<li><p>文件目录</p>
+<ul>
+<li>/ 根目录，“/”不能作为文件名</li>
+<li>/bin：通常存放所有可执行二进制文件</li>
+<li>/sbin：通常存放管理员的二进制文件，启动系统时会用到</li>
+<li>/boot：存放开机引导程序</li>
+<li>/etc：存放配置文件</li>
+<li>/lib：库文件</li>
+<li>/var：存放经常变动的信息文件，如/var/log、/var/mail…</li>
+<li>/dev：设备文件</li>
+<li>/home：普通用户的家目录</li>
+<li>/root：管理员的家目录</li>
+<li>/media：移动设备挂载点，如：/media/usb、/media/cdrom</li>
+<li>/mnt：临时挂载点</li>
+<li>/opt：第三方软件安装位置</li>
+<li>/usr：程序安装位置</li>
+<li>/proc：伪文件系统</li>
+<li>/sys：伪文件系统</li>
+<li>/srv：服务存放位置</li>
+<li>/tmp：临时文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="Linux用户和组管理"><a href="#Linux用户和组管理" class="headerlink" title="Linux用户和组管理"></a>Linux用户和组管理</h3><ul>
+<li><p>属主：</p>
+<ul>
+<li>管理员用户root：uid0</li>
+<li>普通用户user：uid（centos 系统用户1-999）（centos 普通用户1000-65535）</li>
+</ul>
+</li>
+<li><p>属组：如果不指定则创建同名组</p>
+<ul>
+<li>管理员组：root</li>
+<li>普通用户组：</li>
+</ul>
+</li>
+<li><p>用户及组管理</p>
+<ul>
+<li>/etc/passwd 用户数据库，存放用户信息及其相关属性</li>
+<li>/etc/shadow 口令数据库，存放密码信息及其相关属性</li>
+<li>/etc/group 组数据库</li>
+<li>/etc/gshadow 组口令数据库，存放密码信息及其相关属性</li>
+<li>useradd  添加用户<ul>
+<li>usermod 修改用户<ul>
+<li>usermod -g mp3 mp4 修改mp4为mp3</li>
+<li>usermod -u 1003 mp4 修改mp4的uid为1003</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>userdel -f 强制删除用户</li>
+<li>passwd 修改密码<ul>
+<li>passwd 修改当前用户密码</li>
+<li>passwd uid 修改对应用户密码</li>
+<li>passwd -d 删除用户密码</li>
+</ul>
+</li>
+<li>groupadd </li>
+</ul>
+</li>
+<li><p>root:X:0:0:root:/root:/bin/bash</p>
+<ul>
+<li><strong>root</strong>:X:0:0:root:/root:/bin/bash ：账号</li>
+<li>root:<strong>X</strong>:0:0:root:/root:/bin/bash ：密码</li>
+<li>root:X:<strong>0</strong>:0:root:/root:/bin/bash ：uid</li>
+<li>root:X:0:<strong>0</strong>:root:/root:/bin/bash ：gid</li>
+<li>root:X:0:0:<strong>root</strong>:/root:/bin/bash ：描述信息</li>
+<li>root:X:0:0:root:<strong>/root</strong>:/bin/bash ：用户所处家目录</li>
+<li>root:X:0:0:root:/root:<strong>/bin/bash</strong> ：用户登陆时运行的shell</li>
+</ul>
+</li>
+<li><p>ntp:!!:18476:::::: </p>
+<ul>
+<li><p><strong>ntp</strong>:!!:18476::::::  名称</p>
+</li>
+<li><p>ntp:<strong>!!</strong>:18476::::::   密码，无则!!</p>
+</li>
+<li><p>ntp:!!:<strong>18476</strong>::::::    最后一次修改密码时间，从1970-1-1开始算</p>
+</li>
+<li><p>ntp:!!:18476:<strong>444</strong>:::::  密码的最小年龄</p>
+</li>
+<li><p>ntp:!!:18476:444:<strong>555</strong>:6:7:8:9   密码的最大年龄</p>
+</li>
+<li><p>ntp:!!:18476:444:555:<strong>6</strong>:7:8:9   提醒时间</p>
+</li>
+<li><p>ntp:!!:18476:444:555:6:<strong>7</strong>:8:9   密码禁用期</p>
+</li>
+<li><p>ntp:!!:18476:444:555:6:7:<strong>8</strong>:9   账户过期日期，空为永不过期</p>
+</li>
+<li><p>ntp:!!:18476:444:555:6:7:8:<strong>9</strong>   保留</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Linux权限管理"><a href="#Linux权限管理" class="headerlink" title="Linux权限管理"></a>Linux权限管理</h3><ul>
+<li><p>r（4）：可读</p>
+</li>
+<li><p>w（2）：可写</p>
+</li>
+<li><p>x（1）：可执行</p>
+</li>
+<li><p>chown 属主.属组 文件名</p>
+</li>
+<li><p>权限修改的方式：</p>
+<ul>
+<li>chmod 权限大小 文件名  -R继承父文件权限</li>
+<li>chmod o其他/g组/a所有/u属主  -/+/=  r/w/x  文件名</li>
+</ul>
+</li>
 </ul>
 
       
@@ -458,7 +624,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据库，Linux</a>
         		</li>
       		
 		</ul>
@@ -804,11 +970,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">远程连接虚拟机失败</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">远程连接虚拟机失败</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据库，Linux</a>
               </li>
             
             <div class="clearfix"></div>
