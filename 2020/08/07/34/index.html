@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>34 | 冯某人的个人博客</title>
+  <title>34.制作离线yum源 | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="34">
-<meta property="og:url" content="http://yoursite.com/2020/08/04/34/index.html">
+  <meta name="description" content="总记老师布置了个配置本地离线yum源的任务，我以为挺简单但是没想到老师真就上课讲80%，还有一个配置文件没讲，giao！踩了坑，回来记录一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="34.制作离线yum源">
+<meta property="og:url" content="http://yoursite.com/2020/08/07/34/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
+<meta property="og:description" content="总记老师布置了个配置本地离线yum源的任务，我以为挺简单但是没想到老师真就上课讲80%，还有一个配置文件没讲，giao！踩了坑，回来记录一下。">
 <meta property="og:locale" content="ch">
-<meta property="article:published_time" content="2020-08-04T01:07:51.000Z">
-<meta property="article:modified_time" content="2020-08-04T01:08:29.345Z">
+<meta property="article:published_time" content="2020-08-07T09:10:47.000Z">
+<meta property="article:modified_time" content="2020-08-07T10:58:23.641Z">
 <meta property="article:author" content="冯某人">
+<meta property="article:tag" content="Linux，离线yum源">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="冯某人的个人博客" type="application/atom+xml">
@@ -163,7 +166,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      34
+      34.制作离线yum源
     </h1>
   
 
@@ -179,15 +182,46 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2020/08/04/34/" class="archive-article-date">
-  	<time datetime="2020-08-04T01:07:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
+        <a href="/2020/08/07/34/" class="archive-article-date">
+  	<time datetime="2020-08-07T09:10:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>老师布置了个配置本地离线yum源的任务，我以为挺简单但是没想到老师真就上课讲80%，还有一个配置文件没讲，giao！踩了坑，回来记录一下。</p>
+<a id="more"></a>
+
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1.给系统做快照<br>2.把/dev/cdrom 挂载到/media下：mount /dev/cdrom /media</p>
+<blockquote>
+<p>[root@localhost ~]# mount /dev/cdrom /media<br>mount: /dev/sr0 写保护，将以只读方式挂载<br>mount: /dev/sr0 已经挂载或 /media 忙<br>       /dev/sr0 已经挂载到 /media 上</p>
+</blockquote>
+<p>3.复制/media下的全部文件到/etc/yum/test：cp -r /media /etc/yum/test（这里拿这个路径举例子）</p>
+<blockquote>
+<p>[root@localhost /]# cd /etc/yum<br>[root@localhost yum]# mkdir test</p>
+<p>[root@localhost yum]# cp -r /media/* /etc/yum/test</p>
+</blockquote>
+<p>4.进入/etc/yum.repo.d/配置文件</p>
+<blockquote>
+<p>[root@localhost yum]# vi /etc/yum.repos.d/CentOS-Local.repo<br>[root@localhost yum]# cat /etc/yum.repos.d/CentOS-Local.repo<br>[CentOS-Local]<br>name=centos yum repo<br>baseurl=file:///etc/yum/test<br>enabled=1<br>gpgcheck=0<br>priority=1</p>
+</blockquote>
+<p>5.清除缓存</p>
+<blockquote>
+<p>[root@localhost yum]# yum clean all<br>已加载插件：fastestmirror, langpacks<br>正在清理软件源： CentOS-Local base extras updates<br>Cleaning up list of fastest mirrors</p>
+</blockquote>
+<p>6.执行yum repolist检测结果</p>
+<blockquote>
+<p>[root@localhost yum]# yum repolist<br>已加载插件：fastestmirror, langpacks<br>Determining fastest mirrors</p>
+<ul>
+<li>base: mirrors.njupt.edu.cn</li>
+<li>extras: mirrors.njupt.edu.cn</li>
+<li>updates: mirrors.njupt.edu.cn<br>CentOS-Local                                                      | 3.6 kB  00:00:00<br>base                                                              | 3.6 kB  00:00:00<br>extras                                                            | 2.9 kB  00:00:00<br>updates                                                           | 2.9 kB  00:00:00<br>(1/6): CentOS-Local/group_gz                                      | 165 kB  00:00:00<br>(2/6): CentOS-Local/primary_db                                    | 6.0 MB  00:00:00<br>(3/6): base/7/x86_64/group_gz                                     | 153 kB  00:00:00<br>(4/6): extras/7/x86_64/primary_db                                 | 205 kB  00:00:00<br>(5/6): base/7/x86_64/primary_db                                   | 6.1 MB  00:00:00<br>(6/6): updates/7/x86_64/primary_db                                | 3.7 MB  00:00:00<br>源标识                                  源名称                                     状态<br>CentOS-Local                            centos yum repo                            10,097<br>base/7/x86_64                           CentOS-7 - Base                            10,070<br>extras/7/x86_64                         CentOS-7 - Extras                             412<br>updates/7/x86_64                        CentOS-7 - Updates                            945</li>
+</ul>
+</blockquote>
+<p>可以看出源名称那里已经存在我们设置的centos yum repo了，这就完成了。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>虽然就这么几步，但是这是经过我试错之后才总结出来的血与泪的经验啊，害</p>
+
       
 
       
@@ -216,6 +250,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux，离线yum源</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -266,7 +311,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/04/34/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/07/34/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -552,6 +597,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据库，Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Linux，离线yum源</a>
               </li>
             
             <div class="clearfix"></div>
