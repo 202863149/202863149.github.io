@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 冯某人的个人博客</title>
+  <title>35.Linux基础 | 冯某人的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="冯某人的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/2/index.html">
+  <meta name="description" content="总记Linux基础课程偏多，特此开第二篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="35.Linux基础">
+<meta property="og:url" content="http://yoursite.com/2020/08/08/35.Linux%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="冯某人的个人博客">
+<meta property="og:description" content="总记Linux基础课程偏多，特此开第二篇">
 <meta property="og:locale" content="ch">
+<meta property="article:published_time" content="2020-08-08T00:55:28.000Z">
+<meta property="article:modified_time" content="2020-08-10T00:36:48.826Z">
 <meta property="article:author" content="冯某人">
+<meta property="article:tag" content="Linux基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="冯某人的个人博客" type="application/atom+xml">
@@ -154,437 +159,366 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-35.Linux基础" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      35.Linux基础
+    </h1>
+  
+
+<!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+  	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/08/08/35.Linux%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-08-08T00:55:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-08</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>Linux基础课程偏多，特此开第二篇</p>
+<a id="more"></a>
+
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h2><ul>
+<li>ip ifconfig route ss </li>
+<li>cat /etc/sysconfig/network-scripts/ifcfg-ens33</li>
+</ul>
+<blockquote>
+<p>TYPE=Ethernet<br>PROXY_METHOD=none #是否同步DHCP中的DNS<br>BROWSER_ONLY=no<br>BOOTPROTO=static<br>DEFROUTE=yes<br>IPV4_FAILURE_FATAL=yes<br>IPV6INIT=yes<br>IPV6_AUTOCONF=yes<br>IPV6_DEFROUTE=yes<br>IPV6_FAILURE_FATAL=no<br>IPV6_ADDR_GEN_MODE=stable-privacy<br>NAME=ens33 #名字<br>UUID=293d09db-b957-401c-a0e0-c93ae13de4a3 #唯一设备标识，可不要<br>DEVICE=ens33 #设备名称<br>ONBOOT=yes # 在设配引导操作系统时使用此配置文件<br>GATEWAY=172.16.12.2<br>IPADDR=172.16.12.11<br>#NETMASK=”255.255.255.0”<br>PREFIX=24<br>DNS=”8.8.8.8”</p>
+</blockquote>
+<h2 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h2><ul>
+<li><p>硬盘</p>
+<ul>
+<li>块设备：block，存取单位“块”，如c磁盘</li>
+<li>字符设备：character 。存取单位“字符”，如键盘</li>
+</ul>
+</li>
+<li><p>设备文件 ：提供接口使底层硬件与用户终端连接，通常关联到驱动程序</p>
+<ul>
+<li>接口类型：<ul>
+<li>并行接口：IDE、SCSI</li>
+<li>串行接口：SATA、USB</li>
+</ul>
+</li>
+<li>设备标识：<ul>
+<li>主标号</li>
+<li>次标号</li>
+</ul>
+</li>
+<li>不同的设备a,b,c，同一个设备a1,a2,a3</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>crw-rw—-. 1 root tty       7, 128 8月   8 08:50 vcsa<br>crw-rw—-. 1 root tty       7, 129 8月   8 08:50 vcsa1<br>crw-rw—-. 1 root tty       7, 130 8月   8 08:50 vcsa2<br>crw-rw—-. 1 root tty       7, 131 8月   8 08:50 vcsa3<br>crw-rw—-. 1 root tty       7, 132 8月   8 08:50 vcsa4<br>crw-rw—-. 1 root tty       7, 133 8月   8 08:50 vcsa5<br>crw-rw—-. 1 root tty       7, 134 8月   8 08:50 vcsa6</p>
+</blockquote>
+<ul>
+<li><p>分区管理工具：fdisk parted</p>
+<ul>
+<li>fdisk：可以管理分区，最多管理15个分区<ul>
+<li>fdisk -l [-u] [设备名 …] 查看分区表信息（以扇区数）</li>
+<li>fdisk -s分区 …</li>
+<li>fdisk -v</li>
+</ul>
+</li>
+<li>子命令：<ul>
+<li>p：查看已有分区</li>
+<li>m：帮助</li>
+<li>n：新建</li>
+<li>d：删除</li>
+<li>q：退出</li>
+<li>w：保存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>mount 挂载文件系统，挂载在空文件夹</p>
+<ul>
+<li>-r只读</li>
+<li>-w只写</li>
+<li>-o 模拟成文件系统</li>
+<li>umount卸载</li>
+</ul>
+</li>
+<li><p>fuer：查看挂载的设备</p>
+</li>
+<li><p>df 查看文件系统空间使用情况</p>
+<ul>
+<li>-k，-m：单位</li>
+<li>-h：human readable</li>
+</ul>
+</li>
+<li><p>free 显示系统中已用和未用的总和</p>
+</li>
+<li><p>du 查看磁盘使用情况</p>
+</li>
+<li><p>raid </p>
+<ul>
+<li>级别0 1 5 10 01</li>
+<li><strong>raid 0：最少两块盘，读写速率得到提高，但无冗余</strong> </li>
+<li>raid 1：写A盘时也在B盘山写，有冗余，读无影响 ，写的速率会降低</li>
+<li>raid 5：三块盘，第三块盘对前两块做差错校验，如果有一块损坏可以反推出，有冗余，读写速率提升</li>
+<li>raid 01：先读写，再备份，要4块盘</li>
+</ul>
+</li>
+</ul>
+<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><ul>
+<li><p>内核作用：进程管理，文件管理。网络管理，驱动，内存，安全等</p>
+</li>
+<li><p>进程：运行的程序的一个副本，内核保管，有生命周期</p>
+<ul>
+<li>创建：第一个进程为systemd，</li>
+<li>管理：保存在内核，所有进程必有父进程，且由父进程创建</li>
+<li>销毁：子进程生产，子进程必须由父进程销毁</li>
+<li>优先级：共0-139<ul>
+<li>1-99：实时优先级，数字越大优先级越高</li>
+<li>100-139：静态优先级，数字越小优先级越高</li>
+</ul>
+</li>
+<li>nice值：-20 – 19对应100–139</li>
+<li>进程内存：有虚拟内存</li>
+<li>守护进程：在系统启动引导的时候创建的进程，和终端无关</li>
+<li>前台进程：所有与终端有关的进程，通过终端启动</li>
+<li>状态：<ul>
+<li>运行态：running</li>
+<li>就绪态（睡眠状态）：ready<ul>
+<li>可中断</li>
+<li>不可中断 D</li>
+</ul>
+</li>
+<li>停止态： Stopd</li>
+<li>僵尸态：已经被释放，但仍存在</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>线程：轻量级的进程</p>
+</li>
+<li><p>进程管理工具</p>
+<ul>
+<li>pstree：显示进程树</li>
+<li>ps：通常跟aux<ul>
+<li>-u：以用户为中心显示出进程信息</li>
+<li>-a：与终端相关的进程</li>
+<li>-x：与终端无关的进程</li>
+<li>-ef：显示所有进程</li>
+</ul>
+</li>
+<li>kill<ul>
+<li>-l：显示当前系统可用信号</li>
+<li>-9：杀死进程信号，强制</li>
+</ul>
+</li>
+<li>pidof</li>
+<li>top</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[root@localhost ~]# ps -aux</p>
+<p>USER   PID %CPU %MEM  VSZ#虚拟内存  RSS#常驻内存  TTY   STAT START   TIME COMMAND</p>
+</blockquote>
+<ul>
+<li><p>VSZ：虚拟内存</p>
+</li>
+<li><p>RSS：常驻内存</p>
+</li>
+<li><p>状态STAT：</p>
+<ul>
+<li>R–running，正在执行</li>
+<li>S–sleeping，就绪态，睡眠态，可中断</li>
+<li>D–未准备好的睡眠状态</li>
+<li>Z：僵尸状态</li>
+<li>T：停止状态</li>
+<li>+：表示前台状态</li>
+<li>l：多线程进程</li>
+<li>s–session  bash</li>
+<li>&lt;：高优先级进程</li>
+<li>N：低优先级进程</li>
+</ul>
+</li>
+</ul>
+<h2 id="OpenSSH服务"><a href="#OpenSSH服务" class="headerlink" title="OpenSSH服务"></a>OpenSSH服务</h2><ul>
+<li><p>ssh：</p>
+<ul>
+<li>v1.0：不安全</li>
+<li>v2.0：安全，基于DH算法，做密钥交换，加密rsa，dsa</li>
+</ul>
+</li>
+<li><p>C/S：</p>
+<ul>
+<li>服务器：<ul>
+<li>Linux：ssh scp</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>默认密钥对存放文件：/root/.ssh</p>
+</li>
+<li><p>客户端配置文件：/etc/ssh/ssh_config</p>
+</li>
+<li><p>服务器配置文件：/etc/ssh/sshd_config</p>
+</li>
+<li><p>基于密钥的认证：</p>
+<ul>
+<li>生成密钥对：ssh-keygen -t rsa</li>
+<li>公钥传递：ssh-copy-id -i .ssh/id_rsa_pub <a href="mailto:root@172.16.12.12">root@172.16.12.12</a></li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/17/25/" class="archive-article-date">
-  	<time datetime="2020-05-17T13:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/17/25/">SQL注入（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL注入</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux基础</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/08/35.Linux%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/17/24/" class="archive-article-date">
-  	<time datetime="2020-05-16T23:40:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/07/34/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">34.制作离线yum源</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/17/24/">手动漏洞挖掘（二）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">文件上传漏洞</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/23/" class="archive-article-date">
-  	<time datetime="2020-05-15T06:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/23/">手动漏洞挖掘（一）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">渗透测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">目录遍历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/14/22/" class="archive-article-date">
-  	<time datetime="2020-05-14T06:15:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/14/22/">大学物理下册波动光学</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">大学物理</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机械振动</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/10/21/" class="archive-article-date">
-  	<time datetime="2020-05-10T00:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/10/21/">大学物理下册热学</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">大学物理下册</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/07/20/" class="archive-article-date">
-  	<time datetime="2020-05-07T06:08:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/07/20/">大学物理下册热学</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">大学物理下册</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">15章</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/05/19/" class="archive-article-date">
-  	<time datetime="2020-05-05T00:35:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/05/19/">数通基础学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数通基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/04/18/" class="archive-article-date">
-  	<time datetime="2020-05-04T01:27:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/04/18/">无线渗透复学（十四）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">AIRCRACK-NG其他工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/03/17/" class="archive-article-date">
-  	<time datetime="2020-05-03T12:06:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/03/17/">无线渗透复学（十三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">WPS及其他工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/03/16/" class="archive-article-date">
-  	<time datetime="2020-05-03T06:27:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/03/16/">无线渗透复学（十二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">WPS攻击</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/page/3/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -611,8 +545,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
