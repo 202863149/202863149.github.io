@@ -16,7 +16,7 @@
 <meta property="og:description" content="总记Linux基础课程偏多，特此开第二篇">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2020-08-08T00:55:28.000Z">
-<meta property="article:modified_time" content="2020-08-10T00:36:48.826Z">
+<meta property="article:modified_time" content="2020-08-10T10:56:25.394Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="Linux基础">
 <meta name="twitter:card" content="summary">
@@ -379,6 +379,220 @@
 <li>公钥传递：ssh-copy-id -i .ssh/id_rsa_pub <a href="mailto:root@172.16.12.12">root@172.16.12.12</a></li>
 </ul>
 </li>
+<li><p>scp ：安全复制</p>
+<ul>
+<li>-r：递归复制</li>
+<li>-p：保持原有文件的属性信息</li>
+<li>-P：指明监听的端口号</li>
+</ul>
+</li>
+<li><p>不使用默认端口</p>
+</li>
+<li><p>不使用版本v1</p>
+</li>
+<li><p>不开启管理员登陆</p>
+</li>
+<li><p>key，强口令</p>
+</li>
+<li><p>限制可登录用户</p>
+</li>
+<li><p>访问限制</p>
+</li>
+<li><p>日志记录及分析</p>
+</li>
+</ul>
+<h2 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h2><ul>
+<li><p>tcp/ip</p>
+<ul>
+<li>通信子层：物理、数据链路、网络层、传输层</li>
+<li>资源子层：应用层</li>
+</ul>
+</li>
+<li><p>DNS：端口53，基于UDP或TCP，UDP实际交互中使用多因为速度快</p>
+<ul>
+<li>端口号：0-1023 dns（53），ssh（22），telnet（23），http（80），https（443）等，不给其他应用使用；1024-49151 注册使用；49152-65535  私有</li>
+</ul>
+</li>
+<li><p>TCP：传输控制协议，面向连接的安全的全双工的协议</p>
+</li>
+<li><p>UDP：用户数据报协议，面向无连接的不安全的全双工的协议</p>
+</li>
+<li><p>本地域名解析：</p>
+<ul>
+<li>配置文件：Linux：/etc/hosts；Windows：%Windows/system32/etc/hosts</li>
+</ul>
+</li>
+<li><p>DNS查询类型</p>
+<ul>
+<li>递归查询：问一次就能得到结果</li>
+<li>迭代查询：多次请求才能得到结果</li>
+</ul>
+</li>
+<li><p>DNS服务器：负责具体解析域名到地址的服务器</p>
+<ul>
+<li>主DNS服务器：负责解析宫泽的服务器</li>
+<li>从DNS服务器：从主复制解析数据库，监听</li>
+<li>缓存DNS服务器</li>
+</ul>
+</li>
+<li><p>每个解析出的条目，都会被记录下来–资源记录（RR）</p>
+</li>
+<li><p>A：internet的正向解析</p>
+</li>
+<li><p>AAAA：ipv6</p>
+</li>
+<li><p>NS：仅用于标识当前区域</p>
+</li>
+<li><p>CNAME：别名</p>
+</li>
+<li><p>/etc/resolv.config</p>
+</li>
+<li><p>dig 发送域名查询信息</p>
+<ul>
+<li>-t A <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> +trace</li>
+</ul>
+</li>
+<li><p>nslookup  交互式命令</p>
+</li>
+<li><p>host -t A <a href="http://www.aidu.com" target="_blank" rel="noopener">www.aidu.com</a></p>
+</li>
+</ul>
+<h2 id="Web-Service"><a href="#Web-Service" class="headerlink" title="Web Service"></a>Web Service</h2><ul>
+<li><p>套接字：端口+IP，tcp</p>
+</li>
+<li><p>http：一种编程语言，超文本标记语言</p>
+</li>
+</ul>
+<blockquote>
+<p>&lt;html&gt;</p>
+<p>   &lt;head&gt;<br>       &lt;title&gt;     &lt;/title&gt;</p>
+<p>&lt;body&gt;    &lt;/body&gt;</p>
+<p>  &lt;/head&gt;</p>
+<p>&lt;/html&gt;</p>
+</blockquote>
+<ul>
+<li><p>web资源</p>
+<ul>
+<li><p>静态：.jpg ,.png ,.gif ,.txt,.mp3,.avi,</p>
+</li>
+<li><p>动态：php,jsp（动态文件，可二次执行）</p>
+</li>
+<li><p>媒体</p>
+</li>
+</ul>
+</li>
+<li><p>工作机制</p>
+<ul>
+<li>请求</li>
+<li>响应</li>
+</ul>
+</li>
+<li><p>URI：</p>
+<ul>
+<li>URL</li>
+<li>URN</li>
+</ul>
+</li>
+<li><p>http协议版本：</p>
+<ul>
+<li>HTTP 0.9 原型版本</li>
+<li>HTTP 1.0 第一个广泛使用的版本，开始支持视频MIME</li>
+<li>HTTP 1.1 增强</li>
+<li>HTTP 2.0 </li>
+</ul>
+</li>
+<li><p>HTTP请求过程</p>
+<ul>
+<li>建立连接，接受请求</li>
+<li>接受请求（web I/O）</li>
+<li>处理请求，解析请求报文 （method  URL version…）<ul>
+<li>GET 从服务器获取资源</li>
+<li>HEAD 只获取首部</li>
+<li>POST 向服务器发送数据</li>
+<li>PUT 上传资源存储到服务器</li>
+<li>DELETE 删除指定资源</li>
+<li>trace 追踪</li>
+<li>options 对指定资源使用特定的请求方法</li>
+</ul>
+</li>
+<li>访问资源，获取请求包中的资源（DOCROOT）</li>
+<li>构建响应报文</li>
+<li>发送响应报文</li>
+<li>记录日志</li>
+</ul>
+</li>
+<li><p>http服务器程序</p>
+<ul>
+<li>httpd</li>
+<li>nginx</li>
+<li>iis</li>
+<li>tomcat</li>
+<li>websphere（IBM的），weblogic（Oracle的）</li>
+</ul>
+</li>
+<li><p>httpd</p>
+<ul>
+<li>配置文件：/etc/httpd/conf/httpd.conf<pre><code>/ etc</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>状态码</p>
+<ul>
+<li>1xx 临时响应</li>
+<li>2xx 成功</li>
+<li>3xx 重定向</li>
+<li>4xx 客户端请求错误</li>
+<li>5xx 服务器错误</li>
+</ul>
+</li>
+<li><p>cat -n 显示编号</p>
+</li>
+<li><p>echo 回显命令</p>
+</li>
+<li><p>whatis 更新所有帮助文档与之对应的关键字的数据库</p>
+</li>
+<li><p>which 显示命令对应的程序路径</p>
+</li>
+<li><p>关闭系统</p>
+<ul>
+<li>shutdown<ul>
+<li>-r  重启</li>
+<li>-h 关机</li>
+</ul>
+</li>
+<li>init <ul>
+<li>0 关机</li>
+<li>6 重启</li>
+</ul>
+</li>
+<li>halt</li>
+<li>poweroff </li>
+<li>reboot  重启</li>
+</ul>
+</li>
+<li><p>mkdir </p>
+<ul>
+<li>-v 显示详细信息</li>
+<li>-p 循环创建  a/b/c</li>
+</ul>
+</li>
+<li><p>rm </p>
+<ul>
+<li>-r 强制删除</li>
+<li>-f 递归删除</li>
+</ul>
+</li>
+<li><p>file  查看文件类型</p>
+</li>
+<li><p>head  查看头</p>
+</li>
+<li><p>tail   查看尾部</p>
+</li>
+<li><p>cp -r </p>
+</li>
+<li><p>mv  移动/重命名</p>
+</li>
 </ul>
 
       
@@ -483,6 +697,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/08/12/36-web%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          36.web基础
+        
+      </div>
+    </a>
   
   
     <a href="/2020/08/07/34/" id="article-nav-older" class="article-nav-link-wrap">
@@ -764,6 +987,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web基础</a>
               </li>
             
             <div class="clearfix"></div>
