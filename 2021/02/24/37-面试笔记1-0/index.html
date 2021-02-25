@@ -16,7 +16,7 @@
 <meta property="og:description" content="总记最近hw，想参加玩玩，简历已交，需要面试，从来没有面试过，现在把面试的知识点盘点一下，方便巩固知识和面试回答。">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2021-02-24T07:18:59.000Z">
-<meta property="article:modified_time" content="2021-02-24T10:42:23.166Z">
+<meta property="article:modified_time" content="2021-02-25T01:16:09.730Z">
 <meta property="article:author" content="冯某人">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -187,7 +187,8 @@
 <a id="more"></a>
 
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="对网站的渗透流程及原因细节"><a href="#对网站的渗透流程及原因细节" class="headerlink" title="对网站的渗透流程及原因细节"></a>对网站的渗透流程及原因细节</h3><ul>
-<li>信息收集<ul>
+<li><p>信息收集</p>
+<ul>
 <li>服务器相关信息：系统版本，真实ip,开放端口，waf情况，web中间件，根据这些信息找已知漏洞；</li>
 <li>网站指纹识别（cms，cdn），dns记录；</li>
 <li>Whois查询，查询网站的备案情况，备案人姓名，邮箱，手机号等，可以做针对性密码字典、社工库找已暴露的密码以及方便后面的社工；</li>
@@ -195,18 +196,20 @@
 <li>扫描目的网站目录结构，查看有没有网站备份文件，甚至是数据库文件，找一些敏感文件，爆后台。</li>
 </ul>
 </li>
-<li>漏洞扫描及利用<ul>
-<li>sql注入：对url的一些参数，以及发包的参数进行抓包改参数重放，手动配合sqlmap自动检测，对错误的参数返回状态判断是否存在sql注入漏洞<ul>
+<li><p>漏洞扫描及利用</p>
+<ul>
+<li><p>sql注入：对url的一些参数，以及发包的参数进行抓包改参数重放，手动配合sqlmap自动检测，对错误的参数返回状态判断是否存在sql注入漏洞</p>
+<ul>
 <li>sql注入的类型<ul>
 <li>报错注入：对于不同的感染参数，返回的界面中有报错信息；</li>
-<li>bool型注入：根据返回的界面有无等来判断<ul>
-<li>1’ and length(database())&gt;=1–+ //判断数据库的长度</li>
-<li>1’ and substr(database(),1,1)=‘t’ –+ //判断数据库第一个字母的值</li>
-<li>1’ and substr(database(),2,1)=‘q’ –+ //判断数据库的第二个字母的值</li>
-<li>1’ and ord(substr(database(),1,1))=115–+ //利用ord和ASCII判断数据库库名</li>
-<li>1’ and substr(database(),2,1)=’q’–+ //利用substr判断数据库的库名</li>
-<li>1’ and substr(select table_name from information_schema.table  wheretable_schema=‘sql’ limit 0,1),1,1)=‘e’ –+ //利用substr判断数据库的表名</li>
-</ul>
+<li>bool型注入：根据返回的界面有无等来判断<blockquote>
+<p>1’ and length(database())&gt;=1–+ //判断数据库的长度</p>
+<p>1’ and substr(database(),1,1)=‘t’ –+ //判断数据库第一个字母的值</p>
+<p>1’ and substr(database(),2,1)=‘q’ –+ //判断数据库的第二个字母的值</p>
+<p>1’ and ord(substr(database(),1,1))=115–+ //利用ord和ASCII判断数据库库名</p>
+<p>1’ and substr(database(),2,1)=’q’–+ //利用substr判断数据库的库名</p>
+<p>1’ and substr(select table_name from information_schema.table  wheretable_schema=‘sql’ limit 0,1),1,1)=‘e’ –+ //利用substr判断数据库的表名</p>
+</blockquote>
 </li>
 <li>延时注入：通过sleep（）函数来判断条件是否为真</li>
 <li>宽字节注入：数据库和web层使用的字符集不同导致的，都使用utf-8字符集就好了</li>
@@ -226,7 +229,8 @@
 </li>
 </ul>
 </li>
-<li>XSS：对标签进行合并并插入js语句的攻击<ul>
+<li><p>XSS：对标签进行合并并插入js语句的攻击</p>
+<ul>
 <li>存储型：经常出现在留言板这种地方，直接存储在服务器端，较稳定；</li>
 <li>反射型 ：构造好xss语句，诱导被攻击者点击，从而实现攻击</li>
 <li>防护：<ul>
@@ -236,19 +240,24 @@
 </li>
 </ul>
 </li>
-<li>CSRF：跨站请求伪造攻击<ul>
+<li><p>CSRF：跨站请求伪造攻击</p>
+<ul>
 <li>防御：添加referer，添加token，token&gt;referer因为不是任何服务器都能接收referer</li>
 </ul>
 </li>
-<li>SSRF：服务器与服务器之间请求没做合法性验证</li>
-<li>文件上传<ul>
+<li><p>SSRF：服务器与服务器之间请求没做合法性验证</p>
+</li>
+<li><p>文件上传</p>
+<ul>
 <li>绕过的中间件版本：IIS 6.0 /xxx.asp/xxx.jpg   nginx &lt;=0.8.37 xxx.jpg .php 空字节代码</li>
 </ul>
 </li>
-<li>文件包含</li>
+<li><p>文件包含</p>
+</li>
 </ul>
 </li>
-<li>提权  不会</li>
+<li><p>提权  不会</p>
+</li>
 </ul>
 <h3 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h3><ul>
 <li>判断服务器类型：大小写，Linux对大小写敏感，Windows不</li>
@@ -509,10 +518,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">hexo博客搭建</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">无线渗透</a>
               </li>
              
@@ -521,11 +526,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MAC地址绑定攻击</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">WEP攻击</a>
+                <a href="javascript:void(0)" class="js-tag color4">hexo博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,6 +538,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AIREPLAY-NG</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">大学物理下册</a>
               </li>
              
@@ -545,19 +550,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPS及其他工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MAC地址绑定攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">WEP攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">WPA攻击</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AIREPLAY-NG</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">WPS攻击</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">AIRCRACK-NG其他工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,6 +575,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">抓包定位ip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">AIRCRACK-NG其他工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,6 +598,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">15章</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">文件上传漏洞</a>
               </li>
              
@@ -594,18 +615,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">目录遍历</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPS及其他工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">arachni报错</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,18 +630,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">远程连接虚拟机失败</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux，离线yum源</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Cisp</a>
               </li>
              
@@ -641,15 +638,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">15章</a>
+                <a href="javascript:void(0)" class="js-tag color5">arachni报错</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">802.11头</a>
+                <a href="javascript:void(0)" class="js-tag color3">Linux，离线yum源</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">控制帧</a>
+                <a href="javascript:void(0)" class="js-tag color5">远程连接虚拟机失败</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Linux基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,7 +658,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">管理帧</a>
+                <a href="javascript:void(0)" class="js-tag color4">控制帧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">802.11头</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,6 +671,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">WEP加密机制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">管理帧</a>
               </li>
             
             <div class="clearfix"></div>
