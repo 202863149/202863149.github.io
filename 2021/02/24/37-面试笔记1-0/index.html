@@ -16,7 +16,7 @@
 <meta property="og:description" content="总记最近hw，想参加玩玩，简历已交，需要面试，从来没有面试过，现在把面试的知识点盘点一下，方便巩固知识和面试回答。">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2021-02-24T07:18:59.000Z">
-<meta property="article:modified_time" content="2021-02-25T01:16:09.730Z">
+<meta property="article:modified_time" content="2021-02-25T11:37:59.290Z">
 <meta property="article:author" content="Numbird">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -266,7 +266,7 @@
 <li>22：SSH</li>
 <li>23：telnet</li>
 <li>80-89：web</li>
-<li>1433:MSSQL</li>
+<li>1433：MSSQL</li>
 <li>1521：oracle</li>
 <li>3306:mysql</li>
 <li>3389：远程连接</li>
@@ -289,6 +289,56 @@
 </ul>
 </li>
 <li>google hacking 语句</li>
+<li>java反序列化：将对象序列化成流的形式，方便存储和传输，攻击者可以构造变量使其序列化后不达到预期从而攻击</li>
+<li>Linux的安全日志目录：/var/log</li>
+</ul>
+<hr>
+<h2 id="hw知识储备"><a href="#hw知识储备" class="headerlink" title="hw知识储备"></a>hw知识储备</h2><ul>
+<li><p>威胁识别：</p>
+<ul>
+<li><p>ip，域名，证书的识别，常见的防御设施（edr，ids等）基本使用：如elk、splunk</p>
+<blockquote>
+<p>注：传统防火墙有ids和ips，d：detective，p：protective</p>
+</blockquote>
+<ul>
+<li>edr：攻击情报的共享</li>
+<li>elk：网络流量的监控，资源大不大，可以做插件实现对恶意流量的分析</li>
+<li>splunk：</li>
+<li>wireshark：<ul>
+<li>过滤相关的协议</li>
+<li>相关的ip地址</li>
+<li>每个包里面的特征</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>流量分析：时间，地点的归纳（ip和网络包的状态）</p>
+<ul>
+<li>时间和地点做归纳：比如cs的心跳包</li>
+<li>tcp流的跟踪</li>
+<li>web流量分析：post数据在包的data处，get数据在header（url，参数）</li>
+<li>暴力破解：验证码绕过，生成的时间</li>
+</ul>
+</li>
+<li><p>常见攻击工具的流量特征</p>
+<ul>
+<li><p>cs：心跳包，证书，3版本在http 1.1/x20 空格，可以生成默认证书，证书的md5可以记下来匹配</p>
+</li>
+<li><p>sqlmap：不输入–random-agent 会带sqlmap 和python版本</p>
+</li>
+<li><p>awvs：速率上快（可设置），header头里面有特征</p>
+</li>
+<li><p>nmap：syn包中window大小包，比较小</p>
+</li>
+<li><p>msf：</p>
+<blockquote>
+<p>时间长，包小，相对固定</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
       
@@ -530,11 +580,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">密钥交换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AIRCRACK-NG基础</a>
+                <a href="javascript:void(0)" class="js-tag color2">AIREPLAY-NG</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,7 +592,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AIREPLAY-NG</a>
+                <a href="javascript:void(0)" class="js-tag color1">AIRCRACK-NG其他工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,7 +604,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">WPS攻击</a>
+                <a href="javascript:void(0)" class="js-tag color5">密钥交换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">AIRCRACK-NG基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,7 +620,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">AIRCRACK-NG其他工具</a>
+                <a href="javascript:void(0)" class="js-tag color2">抓包定位ip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,11 +628,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">抓包定位ip</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">15章</a>
+                <a href="javascript:void(0)" class="js-tag color1">WPS攻击</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,11 +636,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">目录遍历</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
+                <a href="javascript:void(0)" class="js-tag color5">大学物理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机械振动</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,11 +652,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">XSS漏洞挖掘</a>
+                <a href="javascript:void(0)" class="js-tag color4">15章</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目录遍历</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">XSS漏洞挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,6 +688,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Cisp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux，离线yum源</a>
               </li>
              
@@ -638,11 +704,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Cisp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据帧</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,23 +720,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据帧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">无线通信过程</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">WEP加密机制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">大学物理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机械振动</a>
               </li>
             
             <div class="clearfix"></div>
