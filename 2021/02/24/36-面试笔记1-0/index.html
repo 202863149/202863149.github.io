@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Cisp | Numbird的个人博客</title>
+  <title>36.面试笔记1.0 | Numbird的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Numbird的个人博客">
-<meta property="og:url" content="http://yoursite.com/tags/Cisp/index.html">
+  <meta name="description" content="总记最近hw，想参加玩玩，简历已交，需要面试，从来没有面试过，现在把面试的知识点盘点一下，方便巩固知识和面试回答。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="36.面试笔记1.0">
+<meta property="og:url" content="http://yoursite.com/2021/02/24/36-%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B01-0/index.html">
 <meta property="og:site_name" content="Numbird的个人博客">
+<meta property="og:description" content="总记最近hw，想参加玩玩，简历已交，需要面试，从来没有面试过，现在把面试的知识点盘点一下，方便巩固知识和面试回答。">
 <meta property="og:locale" content="ch">
+<meta property="article:published_time" content="2021-02-24T07:18:59.000Z">
+<meta property="article:modified_time" content="2021-02-25T11:40:49.820Z">
 <meta property="article:author" content="Numbird">
+<meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Numbird的个人博客" type="application/atom+xml">
@@ -146,61 +151,335 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-36-面试笔记1-0" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/08/20/36-Cisp-PTE%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-08-20T06:04:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/20/36-Cisp-PTE%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">36.Cisp-PTE笔记（一）</a>
+    <h1 class="article-title" itemprop="name">
+      36.面试笔记1.0
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+<!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+  	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
+        
+        
+<a href="/2021/02/24/36-%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B01-0/" class="archive-article-date">
+  	<time datetime="2021-02-24T07:18:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>最近hw，想参加玩玩，简历已交，需要面试，从来没有面试过，现在把面试的知识点盘点一下，方便巩固知识和面试回答。</p>
+<a id="more"></a>
+
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="对网站的渗透流程及原因细节"><a href="#对网站的渗透流程及原因细节" class="headerlink" title="对网站的渗透流程及原因细节"></a>对网站的渗透流程及原因细节</h3><ul>
+<li><p>信息收集</p>
+<ul>
+<li>服务器相关信息：系统版本，真实ip,开放端口，waf情况，web中间件，根据这些信息找已知漏洞；</li>
+<li>网站指纹识别（cms，cdn），dns记录；</li>
+<li>Whois查询，查询网站的备案情况，备案人姓名，邮箱，手机号等，可以做针对性密码字典、社工库找已暴露的密码以及方便后面的社工；</li>
+<li>子域名收集，旁站，c段：通过dig或trace命令，查ip相对应的域名，原因：主站可能防御性高，尽量从旁站入手；</li>
+<li>扫描目的网站目录结构，查看有没有网站备份文件，甚至是数据库文件，找一些敏感文件，爆后台。</li>
+</ul>
+</li>
+<li><p>漏洞扫描及利用</p>
+<ul>
+<li><p>sql注入：对url的一些参数，以及发包的参数进行抓包改参数重放，手动配合sqlmap自动检测，对错误的参数返回状态判断是否存在sql注入漏洞</p>
+<ul>
+<li>sql注入的类型<ul>
+<li>报错注入：对于不同的感染参数，返回的界面中有报错信息；</li>
+<li>bool型注入：根据返回的界面有无等来判断<blockquote>
+<p>1’ and length(database())&gt;=1–+ //判断数据库的长度</p>
+<p>1’ and substr(database(),1,1)=‘t’ –+ //判断数据库第一个字母的值</p>
+<p>1’ and substr(database(),2,1)=‘q’ –+ //判断数据库的第二个字母的值</p>
+<p>1’ and ord(substr(database(),1,1))=115–+ //利用ord和ASCII判断数据库库名</p>
+<p>1’ and substr(database(),2,1)=’q’–+ //利用substr判断数据库的库名</p>
+<p>1’ and substr(select table_name from information_schema.table  wheretable_schema=‘sql’ limit 0,1),1,1)=‘e’ –+ //利用substr判断数据库的表名</p>
+</blockquote>
+</li>
+<li>延时注入：通过sleep（）函数来判断条件是否为真</li>
+<li>宽字节注入：数据库和web层使用的字符集不同导致的，都使用utf-8字符集就好了</li>
+</ul>
+</li>
+<li>sqlmap的运用方法：<ul>
+<li>GET型：sqlmap -u “目标网址” –cookie= ；</li>
+<li>POST型：sqlmap -u “目标网址” –data=“参数”；</li>
+<li>直接跑burp的包  -r </li>
+</ul>
+</li>
+<li>sql注入的预防办法：<ul>
+<li>对字符转义mysql_real_escape()，转义后可尝试hex编码绕过</li>
+<li>对数据库实行参数化，使得参数是参数，语句是语句</li>
+<li>对客户端进行限制不允许输入sql注入相关的字符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>XSS：对标签进行合并并插入js语句的攻击</p>
+<ul>
+<li>存储型：经常出现在留言板这种地方，直接存储在服务器端，较稳定；</li>
+<li>反射型 ：构造好xss语句，诱导被攻击者点击，从而实现攻击</li>
+<li>防护：<ul>
+<li>输入点检测：对用户输入进行限制，最好放在服务端处检查</li>
+<li>输出点检测：对变量输出到html的网页时，进行编码转义</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CSRF：跨站请求伪造攻击</p>
+<ul>
+<li>防御：添加referer，添加token，token&gt;referer因为不是任何服务器都能接收referer</li>
+</ul>
+</li>
+<li><p>SSRF：服务器与服务器之间请求没做合法性验证</p>
+</li>
+<li><p>文件上传</p>
+<ul>
+<li>绕过的中间件版本：IIS 6.0 /xxx.asp/xxx.jpg   nginx &lt;=0.8.37 xxx.jpg .php 空字节代码</li>
+</ul>
+</li>
+<li><p>文件包含</p>
+</li>
+</ul>
+</li>
+<li><p>提权  不会</p>
+</li>
+</ul>
+<h3 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h3><ul>
+<li>判断服务器类型：大小写，Linux对大小写敏感，Windows不</li>
+<li>各种端口：<ul>
+<li>21：ftp</li>
+<li>22：SSH</li>
+<li>23：telnet</li>
+<li>80-89：web</li>
+<li>1433：MSSQL</li>
+<li>1521：oracle</li>
+<li>3306:mysql</li>
+<li>3389：远程连接</li>
+<li>5432：Postgresql</li>
+</ul>
+</li>
+<li>nmap的几种扫描类型<ul>
+<li>全连接</li>
+<li>半开放</li>
+<li>隐蔽</li>
+</ul>
+</li>
+<li>网络协议模型<ul>
+<li>tcp/ip四层：物理层、网络层、传输层、应用层</li>
+<li>osi七层：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层</li>
+</ul>
+</li>
+<li>如何绕过waf<ul>
+<li>大小写，干扰字符/**/，编码</li>
+</ul>
+</li>
+<li>google hacking 语句</li>
+<li>java反序列化：将对象序列化成流的形式，方便存储和传输，攻击者可以构造变量使其序列化后不达到预期从而攻击</li>
+<li>Linux的安全日志目录：/var/log</li>
+</ul>
+<hr>
+<h2 id="hw知识储备"><a href="#hw知识储备" class="headerlink" title="hw知识储备"></a>hw知识储备</h2><ul>
+<li><p>威胁识别：</p>
+<ul>
+<li><p>ip，域名，证书的识别，常见的防御设施（edr，ids等）基本使用：如elk、splunk</p>
+<blockquote>
+<p>注：传统防火墙有ids和ips，d：detective，p：protective</p>
+</blockquote>
+<ul>
+<li>edr：攻击情报的共享</li>
+<li>elk：网络流量的监控，资源大不大，可以做插件实现对恶意流量的分析</li>
+<li>splunk：</li>
+<li>wireshark：<ul>
+<li>过滤相关的协议</li>
+<li>相关的ip地址</li>
+<li>每个包里面的特征</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>流量分析：时间，地点的归纳（ip和网络包的状态）</p>
+<ul>
+<li>时间和地点做归纳：比如cs的心跳包</li>
+<li>tcp流的跟踪</li>
+<li>web流量分析：post数据在包的data处，get数据在header（url，参数）</li>
+<li>暴力破解：验证码绕过，生成的时间</li>
+</ul>
+</li>
+<li><p>常见攻击工具的流量特征</p>
+<ul>
+<li><p>cs：心跳包，证书，3版本在http 1.1/x20 空格，可以生成默认证书，证书的md5可以记下来匹配</p>
+</li>
+<li><p>sqlmap：不输入–random-agent 会带sqlmap 和python版本</p>
+</li>
+<li><p>awvs：速率上快（可设置），header头里面有特征</p>
+</li>
+<li><p>nmap：syn包中window大小包，比较小</p>
+</li>
+<li><p>msf：</p>
+<blockquote>
+<p>时间长，包小，相对固定</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Cisp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/02/24/36-%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B01-0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/08/08/35.Linux%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">35.Linux基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -227,9 +506,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
@@ -289,10 +568,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">hexo博客搭建</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">无线渗透</a>
               </li>
              
@@ -301,27 +576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">hexo博客搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AIREPLAY-NG</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">大学物理下册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">热学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">AIRCRACK-NG其他工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MAC地址绑定攻击</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">WEP攻击</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -333,7 +592,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">大学物理下册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">热学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">WPA攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MAC地址绑定攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">WEP攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">AIRCRACK-NG其他工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -341,7 +620,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">抓包定位ip</a>
+                <a href="javascript:void(0)" class="js-tag color1">WPS攻击</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -349,15 +628,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">WPS攻击</a>
+                <a href="javascript:void(0)" class="js-tag color4">15章</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
+                <a href="javascript:void(0)" class="js-tag color2">抓包定位ip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -369,15 +644,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">文件上传漏洞</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">15章</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -385,11 +652,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">文件上传漏洞</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">XSS漏洞挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">arachni报错</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">远程连接虚拟机失败</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Linux，离线yum源</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -405,7 +692,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">远程连接虚拟机失败</a>
+                <a href="javascript:void(0)" class="js-tag color3">Linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">802.11头</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -413,23 +704,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Cisp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux，离线yum源</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据帧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">802.11头</a>
               </li>
              
               <li class="article-tag-list-item">
