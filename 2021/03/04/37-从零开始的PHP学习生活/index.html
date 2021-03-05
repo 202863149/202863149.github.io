@@ -16,7 +16,7 @@
 <meta property="og:description" content="总记hvv想来想去有点耽误正常学习生活，遂放弃，之前的面试知识总结也算是对之前web方面的一个总结，最近也是一直在学习php代码审计，上手撸了几段代码之后，本来代码基础就不好，现感受很大，记录一下在撸代码期间感受到的一些细节吧，以后学业不繁忙的时候也会继续学习并记录心得笔记。今天学习的是php会话技术。">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2021-03-04T13:23:53.000Z">
-<meta property="article:modified_time" content="2021-03-04T14:10:12.615Z">
+<meta property="article:modified_time" content="2021-03-05T13:10:28.062Z">
 <meta property="article:author" content="Numbird">
 <meta property="article:tag" content="PHP">
 <meta name="twitter:card" content="summary">
@@ -199,7 +199,18 @@
 <li><p>超全局变量$_POST[“”],$_SESSION[“”];</p>
 </li>
 </ul>
-<p>今天就到这。</p>
+<h2 id="DAY-2"><a href="#DAY-2" class="headerlink" title="DAY 2"></a>DAY 2</h2><p>今天学文件上传操作。个人觉得值得注意的点记录如下</p>
+<ul>
+<li>form表单文件上传input标签type=file；</li>
+<li>超全局变量$_FILES;</li>
+<li>魔术变量__DIR__显示当前目录路径，dirname（xx），显示xx的上级路径；</li>
+<li>move_uploaded_file（filename，destination）<ul>
+<li>$filename = _FILES[“LABEL_NAME”][“tmp_name”];</li>
+<li>destination中取filetype：strrchr($_FILES[“LABEL_NAME”][“name”], “.”);</li>
+</ul>
+</li>
+<li>is_dir,mkdir(path,mode,bool);</li>
+</ul>
 
       
 
@@ -436,19 +447,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">hexo博客搭建</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AIREPLAY-NG</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">密钥交换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AIRCRACK-NG基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -460,7 +459,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">WPA攻击</a>
+                <a href="javascript:void(0)" class="js-tag color4">hexo博客搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPS及其他工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">密钥交换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">AIRCRACK-NG基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,14 +483,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">AIRCRACK-NG其他工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPS及其他工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">WPS攻击</a>
               </li>
              
@@ -488,11 +491,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">15章</a>
+                <a href="javascript:void(0)" class="js-tag color1">WPA攻击</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">抓包定位ip</a>
+                <a href="javascript:void(0)" class="js-tag color1">AIRCRACK-NG其他工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">文件上传漏洞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,7 +515,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">抓包定位ip</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,31 +527,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">文件上传漏洞</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">XSS漏洞挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">arachni报错</a>
+                <a href="javascript:void(0)" class="js-tag color4">15章</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">远程连接虚拟机失败</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux，离线yum源</a>
+                <a href="javascript:void(0)" class="js-tag color3">XSS漏洞挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,11 +551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linux基础</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">802.11头</a>
+                <a href="javascript:void(0)" class="js-tag color3">Linux基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,15 +563,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">远程连接虚拟机失败</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">arachni报错</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Linux，离线yum源</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据帧</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">控制帧</a>
+                <a href="javascript:void(0)" class="js-tag color3">802.11头</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">管理帧</a>
+                <a href="javascript:void(0)" class="js-tag color4">控制帧</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,7 +595,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color4">管理帧</a>
               </li>
             
             <div class="clearfix"></div>
