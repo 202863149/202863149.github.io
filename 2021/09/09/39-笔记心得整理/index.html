@@ -17,7 +17,7 @@
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/1.png">
 <meta property="article:published_time" content="2021-09-09T10:50:04.000Z">
-<meta property="article:modified_time" content="2021-09-15T11:58:29.052Z">
+<meta property="article:modified_time" content="2021-09-15T12:03:06.822Z">
 <meta property="article:author" content="Numbird">
 <meta property="article:tag" content="笔记整理">
 <meta name="twitter:card" content="summary">
@@ -199,7 +199,7 @@
 </ul>
 <p>后面爆表爆列爆字段就是往常一样，将select database()语句更换为要使用的语句就行了</p>
 <h3 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3><p>​        时间盲注得话基本上我个人觉得和布尔盲注差不多，不过是多使用if()判断和sleep()函数，如<code>?id=1&#39; and if(length(select (database())&gt;10,sleep(5),1)--+</code> 然后将length函数换为ascii函数，并辅以substr函数即可。</p>
-<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><p>​    报错注入分为两种，<strong>一种是xpath报错</strong>，使用extractvalue(xml_document,Xpath_string)与updatexml(xml_document,xpath_string,new_value)函数，利用~、#、$等不能满足xpath_string格式的字符使报错，而报错信息中含有查询结果；<strong>另一种</strong>则利用floor(rand(0)<em>2)、count(\</em>)、group by形成虚拟表插入失败报错</p>
+<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><p>​    报错注入分为两种，<strong>一种是xpath报错</strong>，使用extractvalue(xml_document,Xpath_string)与updatexml(xml_document,xpath_string,new_value)函数，利用~、#、$等不能满足xpath_string格式的字符使报错，而报错信息中含有查询结果；<strong>另一种</strong>则利用floor(rand(0)*2)、count(*)、group by形成虚拟表插入失败报错</p>
 <h3 id="xpath报错注入"><a href="#xpath报错注入" class="headerlink" title="xpath报错注入"></a>xpath报错注入</h3><ul>
 <li><p>extractvalue(xml_document,Xpath_string)函数</p>
 <ul>
@@ -217,7 +217,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="concat-rand-group-by-导致主键重复"><a href="#concat-rand-group-by-导致主键重复" class="headerlink" title="concat+rand()+group_by()导致主键重复"></a>concat+rand()+group_by()导致主键重复</h2><p>​        原理大概是rand(0)<em>2产生规律性的随机数，group by在确定本次结果在虚拟表中不存在时会再一次进行计算后插入虚拟表中，如语句`select count(</em>),(concat(floor(rand(0)<em>2),‘@’,(select version())))x from TABLE_NAME group by x`，如果rand(0)\</em>2随机出0101（例如），在第一次运算rand(0)值为0，group by 检测<a href="mailto:0@5.6.17">0@5.6.17</a>查询虚拟表中无此项时将进行插入，插入前再进行一次运算后rand(0)值为1结果变为<a href="mailto:1@5.6.17">1@5.6.17</a>，插入虚拟表内；第二次检测时rand(0)值为0，结果为<a href="mailto:0@5.6.17">0@5.6.17</a>，表内没有（注意到此时表内只有一项<a href="mailto:1@5.6.17">1@5.6.17</a>），group by准备进行插入，而插入前在进行一次rand(0)运算值为1，导致结果变为<a href="mailto:1@5.6.17">1@5.6.17</a>，插入后与表内项重复导致报错并且将运算结果显示在报错信息中导致报错注入。</p>
+<h2 id="concat-rand-group-by-导致主键重复"><a href="#concat-rand-group-by-导致主键重复" class="headerlink" title="concat+rand()+group_by()导致主键重复"></a>concat+rand()+group_by()导致主键重复</h2><p>​        原理大概是rand(0)*2产生规律性的随机数，group by在确定本次结果在虚拟表中不存在时会再一次进行计算后插入虚拟表中，如语句<code>select count(*),(concat(floor(rand(0)*2),&#39;@&#39;,(select version())))x from TABLE_NAME group by x</code>，如果rand(0)*2随机出0101（例如），在第一次运算rand(0)值为0，group by 检测<a href="mailto:0@5.6.17">0@5.6.17</a>查询虚拟表中无此项时将进行插入，插入前再进行一次运算后rand(0)值为1结果变为<a href="mailto:1@5.6.17">1@5.6.17</a>，插入虚拟表内；第二次检测时rand(0)值为0，结果为<a href="mailto:0@5.6.17">0@5.6.17</a>，表内没有（注意到此时表内只有一项<a href="mailto:1@5.6.17">1@5.6.17</a>），group by准备进行插入，而插入前在进行一次rand(0)运算值为1，导致结果变为<a href="mailto:1@5.6.17">1@5.6.17</a>，插入后与表内项重复导致报错并且将运算结果显示在报错信息中导致报错注入。</p>
 <p>​        此处用rand(0)*2的原因是因为rand函数在给定种子的情况下产生的随机数序列是有规律的可以稳定触发报错。</p>
 <ul>
 <li><code>select count(*),(concat(floor(rand(0)*2),&#39;@&#39;,(select version())))x from TABLE_NAME group by x;</code></li>
