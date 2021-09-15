@@ -17,7 +17,7 @@
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/1.png">
 <meta property="article:published_time" content="2021-09-09T10:50:04.000Z">
-<meta property="article:modified_time" content="2021-09-15T08:00:32.790Z">
+<meta property="article:modified_time" content="2021-09-15T11:58:29.052Z">
 <meta property="article:author" content="Numbird">
 <meta property="article:tag" content="笔记整理">
 <meta name="twitter:card" content="summary">
@@ -250,7 +250,30 @@
 </li>
 </ul>
 <h2 id="堆注入"><a href="#堆注入" class="headerlink" title="堆注入"></a>堆注入</h2><p>​        堆注入，原理是在一条数据库语句结束之后用分号结尾后面再接一句数据库查询语句来达到执行多条数据库语句的目的，看了很多博客，没有看到写堆注入发生的条件的博客，这么来看，堆注入相比起来是最简单的注入，如果存在堆注入的话基本上就能使用纯数据库语言来进行注入，也有可能这个注入发生的条件比较苛刻，hh</p>
-<h2 id="user-agent注入"><a href="#user-agent注入" class="headerlink" title="user-agent注入"></a>user-agent注入</h2><h2 id="cookies注入"><a href="#cookies注入" class="headerlink" title="cookies注入"></a>cookies注入</h2><h2 id="反序列化注入"><a href="#反序列化注入" class="headerlink" title="反序列化注入"></a>反序列化注入</h2><h2 id="SQL注入bypass姿势"><a href="#SQL注入bypass姿势" class="headerlink" title="SQL注入bypass姿势"></a>SQL注入bypass姿势</h2><p>​        对于sql注入的bypass注入，今天下午看了几本书，总结起来大概就是大小写、双写、使用%0a，%0b，等绕过空格过滤、编码绕过、使用title的字长限制绕过、/*!%53eLEct*/绕过</p>
+<h2 id="http头注入"><a href="#http头注入" class="headerlink" title="http头注入"></a>http头注入</h2><h3 id="User-agent注入"><a href="#User-agent注入" class="headerlink" title="User-agent注入"></a>User-agent注入</h3><p>​        在freebuf里面看到一篇写的非常好的文章，其中提到了这个UA注入，这个原理是之前看的博客里面没有提到过的，其他博客只讲如何利用。</p>
+<p>自己总结下来的话，UA的原理就是</p>
+<ul>
+<li><p>记录访问者信息</p>
+</li>
+<li><p>服务器利用http头中的user-agent来选择推送相应规格的页面</p>
+<p>那么UA注入是啥呢？注入嘛，跟时间盲注差不多，只不过这个是在UA后面插入盲注语句</p>
+</li>
+</ul>
+<h3 id="Referer注入"><a href="#Referer注入" class="headerlink" title="Referer注入"></a>Referer注入</h3><p>同上，不过是在头的Referer里面注入</p>
+<h3 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h3><p>​    又看到一篇写得很好的文章，太通透了。</p>
+<p>cookie注入字面上理解就是在cookie里注入，那么cookie注入触发的条件是什么呢？</p>
+<ul>
+<li>未对cookie提交的数据进行过滤</li>
+<li>后端程序直接使用request(“xxx”)函数，就是说没有指明request这个函数是从url后面的参数取值还是从http包里面的cookie值取值，这就造成了你虽然可以在我提交的参数和数据包内数据进行过滤但是我从cookie传参就导致了cookie注入</li>
+</ul>
+<p>那么cookie注入的特征是啥呢？比如</p>
+<ul>
+<li>先正常访问<code>http://117.167.136.245:10181/shownews.asp?id=169</code></li>
+<li>然后清空url地址栏，输入<code>javascript:alert(document.cookie=&quot;id=&quot;+escape(&quot;169&quot;));</code></li>
+<li>再访问<code>http://117.167.136.245:10181/shownews.asp?</code> 如果显示结果与第一步带id参数的url的结果一样那说明存在cookie注入</li>
+</ul>
+<p>那么就可以在escape函数里面进行插入sql注入语句进行注入了</p>
+<h2 id="反序列化注入"><a href="#反序列化注入" class="headerlink" title="反序列化注入"></a>反序列化注入</h2><h2 id="SQL注入bypass姿势"><a href="#SQL注入bypass姿势" class="headerlink" title="SQL注入bypass姿势"></a>SQL注入bypass姿势</h2><p>​        对于sql注入的bypass注入，今天下午看了几本书，总结起来大概就是大小写、双写、使用%0a，%0b，等绕过空格过滤、编码绕过、使用title的字长限制绕过、/*!%53eLEct*/绕过</p>
 <p>​        遇到一个阿里云虚拟主机案例，数字型注入，mysql数据库，屏蔽了information_schema.tables等表，由于此案例有报错信息，可得到当前表名，因此可使用join报错注入<code>and（select * from (select * from TABLE_NAME a join TABLE_NAME b)c)</code>爆出第一列列名，假如是id，则下一次使用<code>and（select * from (select * from TABLE_NAME a join TABLE_NAME b using(id))c)</code>爆出第二列列名，以此类推即可爆出当前数据库所有表名。</p>
 
       
