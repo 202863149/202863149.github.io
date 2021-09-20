@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/1.png">
 <meta property="og:image" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5.png">
 <meta property="article:published_time" content="2021-09-09T10:50:04.000Z">
-<meta property="article:modified_time" content="2021-09-17T03:15:17.795Z">
+<meta property="article:modified_time" content="2021-09-20T12:42:46.681Z">
 <meta property="article:author" content="Numbird">
 <meta property="article:tag" content="笔记整理">
 <meta name="twitter:card" content="summary">
@@ -277,7 +277,26 @@
 <h2 id="二次注入"><a href="#二次注入" class="headerlink" title="二次注入"></a>二次注入</h2><p>​        先不看其他文章自己回忆一下，印象中很深的一句话是，二次注入是后端程序信任从数据库中取出的数据是安全的，拿来就用不进行过滤导致二次注入。</p>
 <p><img src="/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5.png" alt></p>
 <p>扒张图下来，大概就是这样，太通透了xdm。</p>
-<h2 id="利用sql注入写入木马"><a href="#利用sql注入写入木马" class="headerlink" title="利用sql注入写入木马"></a>利用sql注入写入木马</h2><h2 id="利用sql注入执行系统命令"><a href="#利用sql注入执行系统命令" class="headerlink" title="利用sql注入执行系统命令"></a>利用sql注入执行系统命令</h2><h2 id="反序列化注入"><a href="#反序列化注入" class="headerlink" title="反序列化注入"></a>反序列化注入</h2><h2 id="SQL注入bypass姿势"><a href="#SQL注入bypass姿势" class="headerlink" title="SQL注入bypass姿势"></a>SQL注入bypass姿势</h2><p>​        对于sql注入的bypass注入，今天下午看了几本书，总结起来大概就是大小写、双写、使用%0a，%0b，等绕过空格过滤、编码绕过、使用title的字长限制绕过、/*!%53eLEct*/绕过</p>
+<h2 id="利用sql注入写入木马"><a href="#利用sql注入写入木马" class="headerlink" title="利用sql注入写入木马"></a>利用sql注入写入木马</h2><p>​        本来不想单独把这个列出来，但是之前尝试过对一个云主机案例进行尝试性写入失败了,所以还是想总结一下。</p>
+<p>能写木马的条件：</p>
+<ul>
+<li>知道网站根目录：知道往哪写能访问到</li>
+<li>magic_quotes_gpc关闭：不对单引号转义，<strong>此函数对低版本的php是默认开启的</strong>，这里试了一下5.1.48是没事的</li>
+<li>用户有写权限：一般只有root权限才有写权限</li>
+<li>secure_file_priv不为NULL：能写文件</li>
+<li><strong>这里实测MYSQL中还有一个限制就是可能数据库没有授权目标机的登陆，出现Access denied for ‘USER’@’%’或者Access denied for ‘USER’@’IP’这种情况，也是无法写入的</strong></li>
+</ul>
+<p>对于mysql而言，想要具有向目录中写东西的权限的话，对于配置中的secure_file_priv的参数</p>
+<ul>
+<li><p>为NULL，这样就是直接不能写</p>
+</li>
+<li><p>为空（不是NULL）那么就是可以随便写</p>
+</li>
+<li><p>指定了目录，如/www/，D:等就只能在指定目录中写文件</p>
+<p>我们在注入时可以使用<code>select @@global.secure_file_priv</code>来查询当前用户是否具有写权限，但是注意，此时如果参数为NULL，则页面返回情况与参数为空的返回情况是一致的，此时不能判断，而已知mysql在5.6.34版本以后 secure_file_priv的值默认为NULL</p>
+</li>
+</ul>
+<h2 id="利用sql注入执行系统命令"><a href="#利用sql注入执行系统命令" class="headerlink" title="利用sql注入执行系统命令"></a>利用sql注入执行系统命令</h2><h2 id="反序列化注入"><a href="#反序列化注入" class="headerlink" title="反序列化注入"></a>反序列化注入</h2><h2 id="SQL注入bypass姿势"><a href="#SQL注入bypass姿势" class="headerlink" title="SQL注入bypass姿势"></a>SQL注入bypass姿势</h2><p>​        对于sql注入的bypass注入，今天下午看了几本书，总结起来大概就是大小写、双写、使用%0a，%0b，等绕过空格过滤、编码绕过、使用title的字长限制绕过、/*!%53eLEct*/绕过</p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>​        遇到一个阿里云虚拟主机案例，数字型注入，mysql数据库，屏蔽了information_schema.tables等表，由于此案例有报错信息，可得到当前表名，因此可使用join报错注入<code>and（select * from (select * from TABLE_NAME a join TABLE_NAME b)c)</code>爆出第一列列名，假如是id，则下一次使用<code>and（select * from (select * from TABLE_NAME a join TABLE_NAME b using(id))c)</code>爆出第二列列名，以此类推即可爆出当前数据库所有表名。</p>
 <p>​        时隔将近一个星期之后再尝试此案例，当时想着如果/*!%53elect*/可以绕过waf对select的屏蔽，那么是否可以用/*!%69nformation_schema.tables*/来绕过waf对information_schema.tables的屏蔽呢？经过尝试，发现确实可以绕过！（ps：这里就很离谱，因为这个想法我刚学会使用/*!%53elect*/的时候就想过这个问题而且尝试了，但是第一次没有成功，而这次却成功了，可能是当时环境的问题），那么下面就很简单了，infromation_schema的表能用那就是常规的sql注入，在此不再赘述。</p>
 
