@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>39.笔记心得整理 | Numbird的个人博客</title>
+  <title>39.笔记心得整理（一）、SQL注入 | Numbird的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="总记​        学习渗透测试，web安全很长时间了，没有提交过任何漏洞，看过一些课程只能挖到一些小厂的洞，挖不到src和众测，感觉自己的实力不够。个人认为是知识没有成体系，许多知识点存在盲区，需要梳理一遍来巩固印象，也需要配合一些实战来加深印象，最近不断地问自己，想出自己的不足之处，希望能够通过梳理这篇自己的盲区。可以看到之前的一些博客也有一些知识点的记录和梳理，但是最终都没有坚持下来，希望">
 <meta property="og:type" content="article">
-<meta property="og:title" content="39.笔记心得整理">
+<meta property="og:title" content="39.笔记心得整理（一）、SQL注入">
 <meta property="og:url" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="Numbird的个人博客">
 <meta property="og:description" content="总记​        学习渗透测试，web安全很长时间了，没有提交过任何漏洞，看过一些课程只能挖到一些小厂的洞，挖不到src和众测，感觉自己的实力不够。个人认为是知识没有成体系，许多知识点存在盲区，需要梳理一遍来巩固印象，也需要配合一些实战来加深印象，最近不断地问自己，想出自己的不足之处，希望能够通过梳理这篇自己的盲区。可以看到之前的一些博客也有一些知识点的记录和梳理，但是最终都没有坚持下来，希望">
@@ -18,8 +18,9 @@
 <meta property="og:image" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/1.png">
 <meta property="og:image" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5.png">
 <meta property="article:published_time" content="2021-09-09T10:50:04.000Z">
-<meta property="article:modified_time" content="2021-09-23T12:21:52.961Z">
+<meta property="article:modified_time" content="2021-10-03T12:31:47.387Z">
 <meta property="article:author" content="Numbird">
+<meta property="article:tag" content="SQL注入">
 <meta property="article:tag" content="笔记整理">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/1.png">
@@ -161,7 +162,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      39.笔记心得整理
+      39.笔记心得整理（一）、SQL注入
     </h1>
   
 
@@ -262,10 +263,10 @@
 <li><p>记录访问者信息</p>
 </li>
 <li><p>服务器利用http头中的user-agent来选择推送相应规格的页面</p>
-<p>那么UA注入是啥呢？注入嘛，跟时间盲注差不多，只不过这个是在UA后面插入盲注语句</p>
+<p>那么UA注入是啥呢？注入嘛，跟时间盲注差不多，只不过这个是在UA后面插入时间盲注语句</p>
 </li>
 </ul>
-<h3 id="Referer注入"><a href="#Referer注入" class="headerlink" title="Referer注入"></a>Referer注入</h3><p>同上，不过是在头的Referer里面注入</p>
+<h3 id="Referer注入"><a href="#Referer注入" class="headerlink" title="Referer注入"></a>Referer注入</h3><p>基本同上，不过是在头的Referer里面注入</p>
 <h3 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h3><p>​    又看到一篇写得很好的文章，太通透了。</p>
 <p>cookie注入字面上理解就是在cookie里注入，那么cookie注入触发的条件是什么呢？</p>
 <ul>
@@ -279,6 +280,7 @@
 <li>再访问<code>http://117.167.136.245:10181/shownews.asp?</code> 如果显示结果与第一步带id参数的url的结果一样那说明存在cookie注入</li>
 </ul>
 <p>那么就可以在escape函数里面进行插入sql注入语句进行注入了</p>
+<h3 id="Host注入"><a href="#Host注入" class="headerlink" title="Host注入"></a>Host注入</h3><p>Host注入的原理是中间件通过http头部的host来拼接网站中某些图片、网址href的路径，此时修改host头可能会使中间件将包转发到恶意构造的host中，可能会造成中间人攻击和一些反射型xss</p>
 <h2 id="二次注入"><a href="#二次注入" class="headerlink" title="二次注入"></a>二次注入</h2><p>​        先不看其他文章自己回忆一下，印象中很深的一句话是，二次注入是后端程序信任从数据库中取出的数据是安全的，拿来就用不进行过滤导致二次注入。</p>
 <p><img src="/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5.png" alt></p>
 <p>扒张图下来，大概就是这样，太通透了xdm。</p>
@@ -394,6 +396,10 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL注入</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">笔记整理</a>
         		</li>
