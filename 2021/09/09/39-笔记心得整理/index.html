@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/1.png">
 <meta property="og:image" content="http://yoursite.com/2021/09/09/39-%E7%AC%94%E8%AE%B0%E5%BF%83%E5%BE%97%E6%95%B4%E7%90%86/%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5.png">
 <meta property="article:published_time" content="2021-09-09T10:50:04.000Z">
-<meta property="article:modified_time" content="2021-10-03T12:31:47.387Z">
+<meta property="article:modified_time" content="2021-10-14T12:18:44.422Z">
 <meta property="article:author" content="Numbird">
 <meta property="article:tag" content="SQL注入">
 <meta property="article:tag" content="笔记整理">
@@ -190,13 +190,13 @@
         <h1 id="总记"><a href="#总记" class="headerlink" title="总记"></a>总记</h1><p>​        学习渗透测试，web安全很长时间了，没有提交过任何漏洞，看过一些课程只能挖到一些小厂的洞，挖不到src和众测，感觉自己的实力不够。个人认为是知识没有成体系，许多知识点存在盲区，需要梳理一遍来巩固印象，也需要配合一些实战来加深印象，最近不断地问自己，想出自己的不足之处，希望能够通过梳理这篇自己的盲区。可以看到之前的一些博客也有一些知识点的记录和梳理，但是最终都没有坚持下来，希望这次能坚持把自己认为的盲区梳理透彻，能够有较大的收获。</p>
 <a id="more"></a>
 
-<h1 id="SQL注入部分"><a href="#SQL注入部分" class="headerlink" title="SQL注入部分"></a>SQL注入部分</h1><h2 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h2><h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>​        使用and判断真假，如<code>id=-1&#39; or ascii(substr((select database()),0,1))&gt;100--+</code>根据页面返回的情况来判断条件是否成立</p>
+<h1 id="SQL注入部分"><a href="#SQL注入部分" class="headerlink" title="SQL注入部分"></a>SQL注入部分</h1><h2 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h2><h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>​        使用and判断真假，如<code>id=-1&#39; or ascii(substr((select database()),1,1))&gt;100--+</code>根据页面返回的情况来判断条件是否成立</p>
 <ul>
 <li><p>判断数据库长度</p>
 <p><code>?id=1&#39; and length(database())=8--+</code></p>
 </li>
 <li><p>判断数据库名</p>
-<p><code>id=-1&#39; or ascii(substr((select database()),0,1))&gt;100--+</code></p>
+<p><code>id=-1&#39; or ascii(substr((select database()),1,1))&gt;100--+</code></p>
 </li>
 </ul>
 <p>后面爆表爆列爆字段就是往常一样，将select database()语句更换为要使用的语句就行了</p>
@@ -223,7 +223,7 @@
 <p>​        此处用rand(0)*2的原因是因为rand函数在给定种子的情况下产生的随机数序列是有规律的可以稳定触发报错。</p>
 <ul>
 <li><code>select count(*),(concat(floor(rand(0)*2),&#39;@&#39;,(select version())))x from TABLE_NAME group by x;</code></li>
-<li><code>select count(*),(concat(floor(rand(0)*2),&#39;@&#39;,(select group_concat(table_name) from information_schema.tables where table_schema=database())))x from TABLE_NMAE group by x;</code> ，此处的TABLE_NAME应是一个足够大的表，如information_schema.tables；</li>
+<li><code>select count(*),(concat(floor(rand(0)*2),&#39;@&#39;,(select group_concat(table_name) from information_schema.tables where table_schema=database())))x from TABLE_NMAE group by x;</code> ，<strong>此处的TABLE_NAME应是一个足够大的表，如information_schema.tables</strong>；</li>
 <li><code>select count(*),(concat(floor(rand(0)*2),&#39;@&#39;,(select group_concat(column_name) from information_schema.columns where table_name=&quot;TABLE_NAME&quot;)))x from TABLE_NMAE group by x;</code></li>
 </ul>
 <h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><p>​        宽字节注入的原理是当客户端、连接层、数据库使用字符集不同时，需要将输入/输出的字符按照客户端-&gt;数据库/数据库-&gt;客户端进行字符集转换，此时攻击者能够构造一定的字符来达到在编码后产生一定的字符将addslashes函数产生的转义符转义使得%27能够逃逸，从而闭合sql语句达到SQL注入。</p>
@@ -242,7 +242,7 @@
 </li>
 </ul>
 <p>针对宽字节注入的方案是使用mysql_set_charset(GBK)&amp;&amp;mysql_real_string_escape()函数，原因是mysql_real_string_escape函数在转义时会根据mysql_set_charset函数指定的字符集来进行转义，从而避免了转义后字符拼接导致的字符逃逸。<strong>这两者缺一不可。</strong></p>
-<p>所以说，如果使用了mysql_real_string_escape函数但是没有使用mysql_set_charset(GBK)时，我们依然能够使用宽字节注入，此时有：</p>
+<p>所以说，如果使用了mysql_real_string_escape函数但是没有使用mysql_set_charset(GB1K)时，我们依然能够使用宽字节注入，此时有：</p>
 <ul>
 <li><p>利用%df突破</p>
 <p>%df%27</p>
@@ -363,7 +363,8 @@
 </ul>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>​        遇到一个阿里云虚拟主机案例，数字型注入，mysql数据库，屏蔽了information_schema.tables等表，由于此案例有报错信息，可得到当前表名，因此可使用join报错注入<code>and（select * from (select * from TABLE_NAME a join TABLE_NAME b)c)</code>爆出第一列列名，假如是id，则下一次使用<code>and（select * from (select * from TABLE_NAME a join TABLE_NAME b using(id))c)</code>爆出第二列列名，以此类推即可爆出当前数据库所有表名。</p>
 <p>​        时隔将近一个星期之后再尝试此案例，当时想着如果/*!%53elect*/可以绕过waf对select的屏蔽，那么是否可以用/*!%69nformation_schema.tables*/来绕过waf对information_schema.tables的屏蔽呢？经过尝试，发现确实可以绕过！（ps：这里就很离谱，因为这个想法我刚学会使用/*!%53elect*/的时候就想过这个问题而且尝试了，但是第一次没有成功，而这次却成功了，可能是当时环境的问题），那么下面就很简单了，infromation_schema的表能用那就是常规的sql注入，在此不再赘述。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​        与其说是总结不如说是这次笔记整理中的一些感悟，sql注入还是比较难的，截止到写此段话时，感觉还有很多东西没有写到，比如sqlmap的tamper脚本；对于更改密码类的页面使用的update、alter等sql语句使用or+报错注入，其中可能还要使用派生表来返回多行数据；还有就是像http头注入没有实战，不知道头注入的特征是什么等等问题都没有完善。</p>
+
       
 
       
